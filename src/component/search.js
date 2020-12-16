@@ -17,20 +17,24 @@ function Search (props){
         axios.get("https://127.0.0.1:8000/api/regions?nom="+ selectValueRegion)
             .then((reg)=>{
                 callback(reg.data);
+
+
             });
     }
             // Si la valeur change on modifie.
     const  handleChangeRegion= value =>{
         setValueRegion(value);
+
     }
 
     // Recherche Departement
 
     const [selectValueDepartement,setValueDepartement]=useState(null);
     const loadOptionDepartement =(selectValueDepartement,callback)=>{
-        axios.get("https://127.0.0.1:8000/api/regions?nom=" + selectValueDepartement)
+        axios.get("https://127.0.0.1:8000/api/departements?nom=" + selectValueDepartement)
             .then((dep)=>{
                 callback(dep.data);
+
             });
     }
     const handleChangeDepartement =value =>{
@@ -45,12 +49,16 @@ function Search (props){
                 callback(vil.data);
             });
     }
+    const [placeholderDepartement,setPlaceholderDepartement]=useState('select')
+    const [placeholderRegions,setPlaceholderRegions]=useState('select')
     const handleChangeVille = value =>{
-        setValueVille(value);
+        setValueRegion(value.departement.region.nom);
+        setValueDepartement(value.departement.nom);
+        setPlaceholderDepartement(value.departement.nom);
+        setPlaceholderRegions(value.departement.region.nom);
         props.onSearchMulti(value.id);
-        console.log(value)
+        console.log(value);
     }
-
 
 
 
@@ -84,7 +92,7 @@ function Search (props){
                             getOptionLabel={reg => reg.nom}
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
-                            placeholder="Saisissez la region.."
+                            placeholder={placeholderDepartement}
                             onChange={handleChangeRegion}
                         />
                     </Form.Group>
@@ -100,7 +108,7 @@ function Search (props){
                             getOptionLabel={dep => dep.nom}
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
-                            placeholder="Saisissez la departement.."
+                            placeholder={placeholderRegions}
                             onChange={handleChangeDepartement}
                         />
                     </Form.Group>
@@ -127,8 +135,9 @@ function Search (props){
 };
 const styleSearch={
 
-    border:'2px solid #000000',
-    marginTop:'10px'
-
+    //border:'2px solid #000000',
+    marginTop:'10px',
+    boxShadow: "5px 10px 1px #9E9E9E",
+    minHeight:'90vh'
 }
 export default Search;

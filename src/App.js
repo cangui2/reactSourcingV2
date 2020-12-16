@@ -1,17 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Row,Col} from "react-bootstrap";
+import {Container,Row,Col,Pagination} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import Search from "./component/search";
 import axios from 'axios'
 import Results from "./component/results";
-import CVTEMPLATE from "./component/cvTemplate";
-import TEST from "./component/cv";
 import CV from "./component/cvTemplate";
+import TEST from "./component/cv";
+
 
 function App(props) {
     //  Liste cv deposer par le recruteur.
+
     const [ liste, setListe ] = useState([]);
     const handleIdRecruteurChanged = (ti) => {
         //setItems(ti);
@@ -26,16 +27,18 @@ function App(props) {
 
     }
     // Liste cv diponible sur candidatheque
+
     const[listAll,setListeAll]=useState([]);
     const handleAllCvRequest = (cv)=>{
-        axios.get(`https://127.0.0.1:8000/api/c_vs`)
+        axios.get(`https://127.0.0.1:8000/api/c_vs?limit=4`)
             .then((result)=>{
                 setListeAll(result.data);
                 setListe([]);
             })
     }
-console.log(listAll);
+
     // Liste par mutli critere
+
     const[regionListe,setRegionlist]=useState([]);
     const[departementListe,setDepartementlist]=useState([]);
     const[villesListe,setVilleListe]=useState([]);
@@ -47,22 +50,32 @@ console.log(listAll);
                 setListeAll([]);
             })
     }
+    // Cv Candidat
+
+    const [cvCandidat,setCvCandidat]=useState([]);
+    const handleCv = (cv)=>{
+        axios.get(`https://127.0.0.1:8000/api/candidats/`+cv)
+            .then((result)=>{
+                setCvCandidat(result.data);
+
+            })
+    }
 
 
 
 
-console.log(liste+'app')
+
   return (
-      <Container fluid >
+      <Container fluid style={ styleSearch}>
         <Row>
           <Col>
               <Search onIdRecruteurChanged={ (ti) => handleIdRecruteurChanged(ti) } onRequestAllCv={handleAllCvRequest} onSearchMulti={(mutli)=>handleMulti(mutli)}/>
           </Col>
           <Col xs={6}>
-          <Results liste={liste} allCv={listAll} multi={villesListe}/>
+                <Results liste={liste} allCv={listAll} multi={villesListe} onReceiveCv={(cv)=>handleCv(cv)}/>
           </Col>
           <Col>
-
+                <TEST cv={cvCandidat}/>
           </Col>
         </Row>
       </Container>
@@ -70,3 +83,9 @@ console.log(liste+'app')
 }
 
 export default App;
+const styleSearch={
+
+    backgroundColor:'#61dafb',
+    minHeight:"90vh"
+
+}

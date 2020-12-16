@@ -1,4 +1,4 @@
-import {Container,Row,Card,Col} from "react-bootstrap";
+import {Container, Row, Card, Col, Pagination} from "react-bootstrap";
 import React from "react";
 import TEST from "./cv";
 import CVTEMPLATE from "./cvTemplate";
@@ -18,6 +18,20 @@ function Results (props){
     //     setItems(props.titre);
     //
     // }, [props.titre, items])
+    let items = [];
+    for (let number = 1; number <= 5; number++) {
+        items.push(
+            <Pagination.Item key={number}>
+                {number}
+            </Pagination.Item>,
+        );
+    }
+    const paginationBasic = (
+        <div>
+            <Pagination>{items}</Pagination>
+            <br />
+        </div>
+    );
 
 
 
@@ -28,10 +42,10 @@ function Results (props){
         <Container fluid>
             <Row>
                 <Col xs={6}>
-                    <div onClick={<TEST/>}>
-                    {props.liste.map(item => (
 
-                            <Card style={{width: '38rem', marginTop: '10px'}} >
+                    {props.liste.map(item => (
+                        <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
+                            <Card style={styleSearch} >
                                 <Card.Body  >
                                     <Card.Title>{item.candidat.nom}</Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">{item.candidat.prenom}</Card.Subtitle>
@@ -45,11 +59,12 @@ function Results (props){
                                 </Card.Body>
 
                             </Card>
-
+                        </div>
                     ))}
-                    </div>
+
+
                     {props.allCv.map(item => (
-                        <Card style={{width: '38rem', marginTop: '10px'}}>
+                        <Card style={styleSearch}>
                             <Card.Body>
                                 <Card.Title>{item.candidat.nom}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{item.candidat.prenom}</Card.Subtitle>
@@ -65,8 +80,9 @@ function Results (props){
                         </Card>
 
                     ))}
+
                     {props.multi.map(item => (
-                        <Card style={{width: '38rem', marginTop: '10px'}}>
+                        <Card style={styleSearch}>
                             <Card.Body>
                                 <Card.Title>{item.candidat.nom}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{item.candidat.prenom}</Card.Subtitle>
@@ -101,3 +117,11 @@ function Results (props){
 };
 
 export default Results;
+const styleSearch={
+
+    //border:'2px solid #000000',
+    width: '38rem',
+    marginTop:'10px',
+    boxShadow: "5px 10px 1px #9E9E9E",
+
+}
