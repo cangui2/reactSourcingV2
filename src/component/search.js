@@ -47,6 +47,8 @@ function Search (props){
     }
     const handleChangeVille = value =>{
         setValueVille(value);
+        props.onSearchMulti(value.id);
+        console.log(value)
     }
 
 
@@ -98,7 +100,7 @@ function Search (props){
                             getOptionLabel={dep => dep.nom}
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
-                            placeholder="Saisissez la region.."
+                            placeholder="Saisissez la departement.."
                             onChange={handleChangeDepartement}
                         />
                     </Form.Group>
@@ -114,7 +116,7 @@ function Search (props){
                             getOptionLabel={vil => vil.nom}
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
-                            placeholder="Saisissez la region.."
+                            placeholder="Saisissez la ville.."
                             onChange={handleChangeVille}
                         />
                     </Form.Group>

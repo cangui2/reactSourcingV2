@@ -6,6 +6,9 @@ import React, {useEffect, useState} from "react";
 import Search from "./component/search";
 import axios from 'axios'
 import Results from "./component/results";
+import CVTEMPLATE from "./component/cvTemplate";
+import TEST from "./component/cv";
+import CV from "./component/cvTemplate";
 
 function App(props) {
     //  Liste cv deposer par le recruteur.
@@ -32,22 +35,35 @@ function App(props) {
             })
     }
 console.log(listAll);
+    // Liste par mutli critere
+    const[regionListe,setRegionlist]=useState([]);
+    const[departementListe,setDepartementlist]=useState([]);
+    const[villesListe,setVilleListe]=useState([]);
+    const handleMulti = (multi)=>{
+        axios.get(`https://127.0.0.1:8000/api/c_vs?candidat.ville=`+multi)
+            .then((result)=>{
+                setVilleListe(result.data);
+                setListe([]);
+                setListeAll([]);
+            })
+    }
 
 
 
-console.log(liste);
 
 console.log(liste+'app')
   return (
       <Container fluid >
         <Row>
           <Col>
-              <Search onIdRecruteurChanged={ (ti) => handleIdRecruteurChanged(ti) } onRequestAllCv={handleAllCvRequest}/>
+              <Search onIdRecruteurChanged={ (ti) => handleIdRecruteurChanged(ti) } onRequestAllCv={handleAllCvRequest} onSearchMulti={(mutli)=>handleMulti(mutli)}/>
           </Col>
           <Col xs={6}>
-          <Results liste={liste} allCv={listAll}/>
+          <Results liste={liste} allCv={listAll} multi={villesListe}/>
           </Col>
-          <Col>3 of 3</Col>
+          <Col>
+
+          </Col>
         </Row>
       </Container>
   );

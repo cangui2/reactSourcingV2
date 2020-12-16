@@ -1,0 +1,9 @@
+.card-header {
+    padding: 0.5em!important;
+}
+
+
+/* @media print {
+    body > div> div> div> div> div> div { display:none; }
+    body .div { display:block; }
+} */
