@@ -36,7 +36,7 @@ function Results (props){
 
 
 
-
+console.log(props.liste+'dans result')
 
     return(
         <Container fluid>

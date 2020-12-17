@@ -60,8 +60,8 @@ function App(props) {
 
             })
     }
-
-
+console.log(liste+'liste');
+    console.log(cvCandidat+'cv')
 
 
 
