@@ -122,6 +122,6 @@ const styleSearch={
     //border:'2px solid #000000',
     width: '38rem',
     marginTop:'10px',
-    boxShadow: "5px 10px 1px #9E9E9E",
+    boxShadow: "5px 5px 1px #9E9E9E",
 
 }

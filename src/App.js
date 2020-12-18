@@ -54,14 +54,14 @@ function App(props) {
 
     const [cvCandidat,setCvCandidat]=useState([]);
     const handleCv = (cv)=>{
-        axios.get(`https://127.0.0.1:8000/api/candidats/`+cv)
+        axios.get(`https://127.0.0.1:8000/api/c_vs?candidat.id=`+cv)
             .then((result)=>{
                 setCvCandidat(result.data);
 
             })
     }
-console.log(liste+'liste');
-    console.log(cvCandidat+'cv')
+
+
 
 
 
@@ -71,7 +71,7 @@ console.log(liste+'liste');
           <Col>
               <Search onIdRecruteurChanged={ (ti) => handleIdRecruteurChanged(ti) } onRequestAllCv={handleAllCvRequest} onSearchMulti={(mutli)=>handleMulti(mutli)}/>
           </Col>
-          <Col xs={6}>
+          <Col >
                 <Results liste={liste} allCv={listAll} multi={villesListe} onReceiveCv={(cv)=>handleCv(cv)}/>
           </Col>
           <Col>
