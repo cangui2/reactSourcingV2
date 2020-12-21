@@ -1,8 +1,5 @@
 import {Container, Row, Card, Col, Pagination, Image, Media, Button} from "react-bootstrap";
 import React from "react";
-import TEST from "./cv";
-import CVTEMPLATE from "./cvTemplate";
-import CV from "./cvTemplate";
 import image from "../avatar.png"
 
 
