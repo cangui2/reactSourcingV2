@@ -66,7 +66,7 @@ function Search (props){
 
     return (
         <Container fluid style={styleSearch}>
-            <Row>
+            <Row style={{marginLeft:'0',marginRight:'0',paddingTop:'10px'}}>
                 <Col >
                 <Button variant="info"  onClick={()=>{props.onIdRecruteurChanged(6)}}>Ma Cvthèque</Button>{' '}
                 </Col>
@@ -136,8 +136,11 @@ function Search (props){
 const styleSearch={
 
     //border:'2px solid #000000',
+    backgroundColor:'white',
+    opacity:'0.9',
     marginTop:'10px',
-    boxShadow: "5px 10px 1px #9E9E9E",
-    minHeight:'90vh'
+    boxShadow: "10px 10px 1px #9E9E9E",
+    minHeight:'90vh',
+
 }
 export default Search;

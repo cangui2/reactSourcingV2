@@ -1,13 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Row,Col,Pagination} from "react-bootstrap";
+import {Container, Row, Card, Col, Pagination, Image, Media, Button} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import Search from "./component/search";
 import axios from 'axios'
 import Results from "./component/results";
 import CV from "./component/cvTemplate";
 import TEST from "./component/cv";
+
 
 
 function App(props) {
@@ -67,14 +68,14 @@ function App(props) {
 
   return (
       <Container fluid style={ styleSearch}>
-        <Row>
+        <Row >
           <Col>
               <Search onIdRecruteurChanged={ (ti) => handleIdRecruteurChanged(ti) } onRequestAllCv={handleAllCvRequest} onSearchMulti={(mutli)=>handleMulti(mutli)}/>
           </Col>
-          <Col >
+          <Col style={border}>
                 <Results liste={liste} allCv={listAll} multi={villesListe} onReceiveCv={(cv)=>handleCv(cv)}/>
           </Col>
-          <Col>
+          <Col style={border}>
                 <TEST cv={cvCandidat}/>
           </Col>
         </Row>
@@ -83,9 +84,13 @@ function App(props) {
 }
 
 export default App;
+const border={
+
+
+}
 const styleSearch={
 
-    backgroundColor:'#61dafb',
+
     minHeight:"90vh"
 
 }

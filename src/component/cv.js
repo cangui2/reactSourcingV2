@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import  {Container, Row,Col,Card} from "react-bootstrap";
+import {Container, Row, Col, Card, Image} from "react-bootstrap";
 import {  Document, Page, pdfjs } from 'react-pdf'
 import cvTemplate from "./cvTemplate";
 import Templates from "./Templates";
+import image from "../avatar.png";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
@@ -18,12 +19,12 @@ console.log(props.cv);
 if (props.cv.length !== 0)
     return(
         <Container fluid>
-            <Row>
+            <Row style={{marginLeft:'0',marginRight:'0',paddingTop:'10px'}}>
                 <Col>
                     {props.cv.map(cv => (
             <Card style={styleSearch} >
                 <Card.Body  >
-                    <Card.Title>{cv.candidat.nom}</Card.Title>
+                    <Card.Title>{cv.candidat.nom}</Card.Title><Image style={{float: 'right',width:'15%'}} src={image} roundedCircle />
                     <Card.Subtitle className="mb-2 text-muted">{cv.candidat.prenom}</Card.Subtitle>
                     <Card.Text>
                         Adresse :{cv.candidat.adresse}
@@ -194,6 +195,8 @@ const styleSearch={
     //border:'2px solid #000000',
     width: '38rem',
     marginTop:'10px',
-    boxShadow: "5px 5px 1px #9E9E9E",
+    boxShadow: "1px 1px 1px #9E9E9E",
+    backgroundColor:'white',
+    opacity:'0.9',
 
 }

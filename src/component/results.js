@@ -1,9 +1,9 @@
-import {Container, Row, Card, Col, Pagination} from "react-bootstrap";
+import {Container, Row, Card, Col, Pagination, Image, Media, Button} from "react-bootstrap";
 import React from "react";
 import TEST from "./cv";
 import CVTEMPLATE from "./cvTemplate";
 import CV from "./cvTemplate";
-
+import image from "../avatar.png"
 
 
 function Results (props){
@@ -39,52 +39,51 @@ function Results (props){
 console.log(props.liste+'dans result')
 
     return(
-        <Container fluid>
-            <Row>
-                <Col xs={6}>
+
+        <Container>
+            <Row style={{marginLeft:'0',marginRight:'0',paddingTop:'10px '}}>
+
+                <Col>
+
 
                     {props.liste.map(item => (
                         <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
                             <Card style={styleSearch} >
+
                                 <Card.Body  >
-                                    <Card.Title>{item.candidat.nom}</Card.Title>
+                                    <Card.Title>{item.candidat.nom} </Card.Title> <Image style={{float: 'right',width:'15%'}} src={image} roundedCircle />
                                     <Card.Subtitle className="mb-2 text-muted">{item.candidat.prenom}</Card.Subtitle>
                                     <Card.Text>
                                         Adresse :{item.candidat.adresse}
                                         <br/>
                                         Numero de Telephone : {item.candidat.telephone}
                                     </Card.Text>
-                                    <Card.Link href="#">Card Link</Card.Link>
-                                    <Card.Link href="#">Another Link</Card.Link>
                                 </Card.Body>
-
                             </Card>
                         </div>
                     ))}
 
 
                     {props.allCv.map(item => (
-                        <Card style={styleSearch}>
-                            <Card.Body>
-                                <Card.Title>{item.candidat.nom}</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">{item.candidat.prenom}</Card.Subtitle>
-                                <Card.Text>
-                                    Adresse :{item.candidat.adresse}
-                                    <br/>
-                                    Numero de Telephone : {item.candidat.telephone}
-                                </Card.Text>
-                                <Card.Link href="#">Card Link</Card.Link>
-                                <Card.Link href="#">Another Link</Card.Link>
-                            </Card.Body>
-
-                        </Card>
-
-                    ))}
+                        <Col>
+                            <Card style={styleSearch}>
+                                <Card.Body>
+                                    <Card.Title>{item.candidat.nom}</Card.Title><Image style={{float: 'right',width:'15%'}} src={image} roundedCircle />
+                                    <Card.Subtitle className="mb-2 text-muted">{item.candidat.prenom}</Card.Subtitle>
+                                    <Card.Text>
+                                        Adresse :{item.candidat.adresse}
+                                        <br/>
+                                        Numero de Telephone : {item.candidat.telephone}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        ))}
 
                     {props.multi.map(item => (
                         <Card style={styleSearch}>
                             <Card.Body>
-                                <Card.Title>{item.candidat.nom}</Card.Title>
+                                <Card.Title>{item.candidat.nom}</Card.Title><Image style={{float: 'right',width:'15%'}} src={image} roundedCircle />
                                 <Card.Subtitle className="mb-2 text-muted">{item.candidat.prenom}</Card.Subtitle>
                                 <Card.Text>
                                     Adresse :{item.candidat.adresse}
@@ -94,11 +93,8 @@ console.log(props.liste+'dans result')
                                 <Card.Link href="#">Card Link</Card.Link>
                                 <Card.Link href="#">Another Link</Card.Link>
                             </Card.Body>
-
                         </Card>
-
                     ))}
-
                 </Col>
 
 
@@ -119,9 +115,12 @@ console.log(props.liste+'dans result')
 export default Results;
 const styleSearch={
 
-    //border:'2px solid #000000',
+
     width: '38rem',
     marginTop:'10px',
-    boxShadow: "5px 5px 1px #9E9E9E",
+    boxShadow: "10px 10px 1px #9E9E9E",
+    backgroundColor:'white',
+    opacity:'0.9',
 
 }
+
