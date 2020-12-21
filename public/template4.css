@@ -1,0 +1,148 @@
+.paper {
+    padding: 40px;
+    border: 2px gray solid;
+    box-shadow: 10px 10px 10px gray;
+    width: 21cm;
+    min-height: 29.7cm;
+    transform: scale(0.8);
+}
+
+.paper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+.identite { grid-area: 1 / 1 / 2 / 2; }
+.titre { grid-area: 2 / 1 / 3 / 2; }
+.profil { grid-area: 3 / 1 / 4 / 2; }
+.competences { grid-area: 4 / 1 / 5 / 2; }
+.interets { grid-area: 5 / 1 / 6 / 2; }
+.intro { grid-area: 1 / 2 / 2 / 4; }
+.experiences { grid-area: 2 / 2 / 4 / 4; }
+.formations { grid-area: 4 / 2 / 6 / 4; }
+
+.paper>.identite, .paper>.titre, .paper>.profil, .paper>.competences, .paper>.interets{
+    color: white;
+    background-color: darkblue;
+    padding-left: 10px;
+}
+
+.paper>.identite>.nom {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3em;
+    margin-bottom: -40px;
+    /* background-color: #eeeeee; */
+}
+
+.paper>.titre>.poste{
+    font-size: 1.5em;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    /* padding-bottom: 10px; */
+}
+
+/* .paper>.intro, .paper>.experiences, .paper>.formations{
+    border-left: 2px darkblue solid;
+} */
+
+/* .paper>.profil, .paper>.competences, .paper>.interets{
+    margin-right: 20px;
+} */
+
+.paper>.intro>header, .paper>.intro>div, .paper>.experiences>header, .paper>.experiences>section, .paper>.formations>header, .paper>.formations>section {
+    margin-left: 20px;
+}
+
+.paper>.profil>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+}
+
+.paper>.intro>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+    color: darkblue;
+}
+
+.paper>.experiences>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+    color: darkblue;
+    border-bottom: 2px darkblue solid;
+}
+
+/* .paper>.experiences>.experience {
+
+} */
+
+.paper>.experiences>.experience>.date {
+    font-weight: bold;
+    display: inline-block;
+    width: 100px;
+}
+
+/*.paper>.experiences>.experience>.date {
+    font-weight: bold;
+    display: inline-block;
+    width: 200px;
+}*/
+
+.paper>.experiences>.experience>.titre {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: inline;
+}
+
+.paper>.experiences>.experience>.description {
+    margin-bottom: 1em;
+}
+
+.paper>.formations>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+    color: darkblue;
+    border-bottom: 2px darkblue solid;
+}
+
+/* .paper>.formations>.formation {
+    border-bottom: 1px gray
+} */
+
+.paper>.formations>.formation>.date {
+    font-weight: bold;
+    display: inline-block;
+    width: 100px;
+}
+
+.paper>.formations>.formation>.titre {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: inline;
+}
+
+.paper>.formations>.formation>.description {
+    margin-bottom: 1em;
+}
+
+.paper>.competences>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+    border-bottom: 2px darkblue solid;
+}
+
+.paper>.interets>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+}
+

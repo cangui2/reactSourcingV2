@@ -1,0 +1,163 @@
+.paper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px;
+    border: 2px gray solid;
+    box-shadow: 10px 10px 10px gray;
+    width: 21cm;
+    min-height: 29.7cm;
+    transform: scale(0.8);
+}
+
+.paper>.identite>.nom {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3em;
+    margin-bottom: -40px;
+    /* background-color: #eeeeee; */
+}
+
+.paper>.titre>.poste{
+    font-size: 1.5em;
+    text-align: center;
+    text-transform: uppercase;
+    color: gray;
+    border-bottom: 10px lightgray solid;
+    padding-bottom: 10px;
+}
+
+.paper>.intro, .paper>.experiences, .paper>.formations{
+    border-left: 2px gray solid;
+}
+
+.paper>.profil, .paper>.competences, .paper>.interets{
+    margin-right: 20px;
+}
+
+.paper>.intro>header, .paper>.intro>div, .paper>.experiences>header, .paper>.experiences>section, .paper>.formations>header, .paper>.formations>section {
+    margin-left: 20px;
+}
+
+.paper>.profil>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+    border-bottom: 2px gray solid;
+}
+
+.paper>.intro>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+    border-bottom: 2px gray solid;
+}
+
+.paper>.experiences>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+    border-bottom: 2px gray solid;
+}
+
+/* .paper>.experiences>.experience {
+
+} */
+
+.paper>.experiences>.experience>.date {
+    font-weight: bold;
+    display: inline-block;
+    width: 100px;
+}
+
+/*.paper>.experiences>.experience>.date {
+    font-weight: bold;
+    display: inline-block;
+    width: 200px;
+}*/
+
+.paper>.experiences>.experience>.titre {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: inline;
+}
+
+.paper>.experiences>.experience>.description {
+    margin-bottom: 1em;
+}
+
+.paper>.formations>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+    border-bottom: 2px gray solid;
+}
+
+/* .paper>.formations>.formation {
+    border-bottom: 1px gray
+} */
+
+.paper>.formations>.formation>.date {
+    font-weight: bold;
+    display: inline-block;
+    width: 100px;
+}
+
+.paper>.formations>.formation>.titre {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: inline;
+}
+
+.paper>.formations>.formation>.description {
+    margin-bottom: 1em;
+}
+
+.paper>.competences>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+    border-bottom: 2px gray solid;
+}
+
+.paper>.interets>header {
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-size: 1.2em;
+    border-bottom: 2px gray solid;
+}
+
+
+/* Ratio éléments*/
+
+.paper>.identite{
+    flex-basis: 100%;
+    order: 0;
+}
+.paper>.titre{
+    flex-basis: 100%;
+    order: 1;
+}
+.paper>.profil{
+    flex-basis: 20%;
+    order: 2;
+}
+.paper>.intro{
+    flex-basis: 70%;
+    order: 3;
+}
+.paper>.competences{
+    flex-basis: 20%;
+    order: 4;
+}
+.paper>.experiences{
+    flex-basis: 70%;
+    order: 5;
+}
+.paper>.interets{
+    flex-basis: 20%;
+    order: 6;
+}
+.paper>.formations{
+    flex-basis: 70%;
+    order: 7;
+}
