@@ -1,0 +1,84 @@
+.paper>.profil {
+    width: 200px;
+    background-color: #eeeeee;
+}
+
+.paper>.titre>header {
+    font-size: 2em;
+    text-align: center;
+}
+
+.paper>.experiences>header {
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 1.4em;
+    border-bottom: 1px gray solid;
+}
+
+.paper>.experiences>.experience {
+    border-bottom: 1px gray green;
+}
+
+.paper>.experiences>.experience>.date {
+    font-weight: bold;
+    display: inline;
+}
+
+.paper>.experiences>.experience>.titre {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: inline;
+}
+
+.paper>.experiences>.experience>.description {
+    margin-bottom: 1em;
+}
+
+.paper>.formations>header {
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 1.4em;
+    border-bottom: 1px gray solid;
+}
+
+.paper>.formations>.formation {
+    border-bottom: 1px gray green;
+}
+
+.paper>.formations>.formation>.date {
+    font-weight: bold;
+    display: inline;
+}
+
+.paper>.formations>.formation>.titre {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: inline;
+}
+
+.paper>.formations>.formation>.description {
+    margin-bottom: 1em;
+}
+
+
+.paper>.competences>header {
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 1.4em;
+    border-bottom: 1px gray solid;
+}
+
+.paper>.langues>header {
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 1.4em;
+    border-bottom: 1px gray solid;
+}
+
+.paper>.reseaux>header {
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 1.4em;
+    border-bottom: 1px gray solid;
+}
+
