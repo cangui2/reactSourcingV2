@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-
+import avatar from '../avatar.png'
 
 import './CV.css';
 
@@ -10,53 +10,50 @@ const CVViewer = (props) => {
 
         return (
             <div className="row">
-                <link rel="stylesheet" href="/template3-1.css"/>
-                <div className="col-6 no-print">
-                    {/* <Dialog /> */}
-                </div>
+                <link rel="stylesheet" href="/template4.css"/>
+
 
                 <div  className="col-sm-12 paper-container">
 
                     <div className="paper">
                         <section className="identite">
-                            {props.cv.map(cv => (
-                                <div className="nom">{cv.candidat.prenom} {cv.candidat.nom}</div>
-                            ))}
+                                <div className="nom">{props.cv.candidat.prenom} {props.cv.candidat.nom}</div>
                             </section>
 
                         <section className="photo">
-                            {props.cv.map(cv => (
-                            <div className="portrait"><img src={cv.candidat.photo}/></div>
-                            ))}
+                            <div className="portrait"><img src={avatar}/></div>
                         </section>
-                        {props.cv.map(cv => (
+
                         <section className="profil">
 
                             <header>Contact</header>
 
-                            <div className="adresse">{cv.candidat.adresse}</div>
-                            <div className="ville">{cv.candidat.ville.nom}</div>
-                            <div className="phone">{cv.candidat.phone}</div>
-                            <div className="email">{cv.candidat.email}</div>
+                            <div className="adresse">{props.cv.candidat.adresse}</div>
+                            <div className="ville">{props.cv.candidat.ville}</div>
+                            <div className="phone">{props.cv.candidat.telephone}</div>
+                            <div className="email">{props.cv.candidat.email}</div>
 
                         </section>
-                        ))}
-                            {/*
+
+
                         <section className="titre">
 
-                            <div className="poste">{this.state.profil.titre}</div>
+                            <div className="poste">{props.cv.metier.libelle}</div>
+
                         </section>
+
                         <section className="intro">
                             <header>Profil</header>
-                            <div className="text">{this.state.profil.description}</div>
+
+                            <div className="text">{props.cv.titre}</div>
+
                         </section>
 
                         <section className="experiences">
                             <header>Experiences</header>
                             <div >
-                                {
-                                    this.state.experiences.map((experience, index) =>
-                                        <div className="experience"  key={index}>
+                                {props.cv.experiences.map(experience => (
+                                        <div className="experience"  >
                                             <div className="date-debut">{experience.dateDebut}</div>
                                             <div className="date-fin">{experience.dateFin}</div>
                                             <div className="entreprise">{experience.entreprise}</div>
@@ -65,32 +62,31 @@ const CVViewer = (props) => {
                                             <div className="titre">{experience.titre}</div>
                                             <div className="desciption">{experience.description}</div>
                                         </div>
-                                    )
-                                }
+                                    ))}
                             </div>
                         </section>
+
                         <section className="formations">
                             <header>Formations</header>
                             <div >
-                                {
-                                    props.cv.formations.map((formation, index) =>
-                                        <div className="formation"  key={index}>
-                                            <div className="date-debut">{formation.dateDebut}</div>
-                                            <div className="date-fin">{formation.dateFin}</div>
-                                            <div className="ecole">{formation.ecole}</div>
-                                            <div className="titre">{formation.diplome}</div>
-                                            <div className="niveau">{formation.niveau}</div>
-                                            <div className="desciption">{formation.description}</div>
+                                {props.cv.formations.map(formations => (
+                                        <div className="formation"  >
+                                            <div className="date-debut">{formations.dateDebut}</div>
+                                            <div className="date-fin">{formations.dateFin}</div>
+                                            <div className="ecole">{formations.ecole}</div>
+                                            <div className="titre">{formations.diplome}</div>
+                                            <div className="niveau">{formations.niveau}</div>
+                                            <div className="desciption">{formations.description}</div>
                                         </div>
-                                    )
-                                }
+                                ))}
                             </div>
                         </section>
+
                         <section className="competences">
                             <header>Competences</header>
                             <div >
                                 {
-                                    this.state.competences.map((competence, index) =>
+                                    props.cv.competences.map((competence, index) =>
                                         <div className="competence"  key={index}>
                                             <div className="libelle">{competence.libelle}</div>
                                             <div className={"niveau niveau-" + competence.niveau}>{competence.niveau}</div>
@@ -104,7 +100,7 @@ const CVViewer = (props) => {
                             <header>Langues</header>
                             <div >
                                 {
-                                    this.state.langues.map((langue, index) =>
+                                    props.cv.langues.map((langue, index) =>
                                         <div className="langue"  key={index}>
                                             <div className="libelle">{langue.libelle}</div>
                                             <div className="niveau">{langue.niveau}</div>
@@ -117,7 +113,7 @@ const CVViewer = (props) => {
                             <header>Réseaux</header>
                             <div >
                                 {
-                                    this.state.reseaux.map((reseau, index) =>
+                                    props.cv.reseaux.map((reseau, index) =>
                                         <div className="reseau"  key={index}>
                                             <div className="libelle no-screen">{reseau.type}</div>
                                             <div className="libelle no-screen">{reseau.url}</div>
@@ -129,7 +125,7 @@ const CVViewer = (props) => {
                                 }
                             </div>
                         </section>
-                        */}
+
                     </div>
                 </div>
 

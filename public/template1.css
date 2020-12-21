@@ -1,16 +1,13 @@
 .paper {
-position: absolute;
-    background-color: beige;
-margin-left: 20px;
-padding: 30px;
-border: 2px gray solid;
-box-shadow: 10px 10px 10px gray;
-width: 21cm;
-min-height: 29.7cm;
-transform: scale(1);
-margin-bottom: 20px;
+    /* position: absolute; */
+    /* margin: -40% 50px 50px -30%; */
+    padding: 30px;
+    border: 2px gray solid;
+    box-shadow: 10px 10px 10px gray;
+    width: 21cm;
+    height: 29.7cm;
+    transform: scale(0.7);
 }
-
 
 .paper>.profil {
     width: 200px;
@@ -48,51 +45,4 @@ margin-bottom: 20px;
     margin-bottom: 1em;
 }
 
-.paper>.formations>header {
-    margin-top: 1em;
-    font-weight: bold;
-    font-size: 1.4em;
-    border-bottom: 1px gray solid;
-}
-
-.paper>.formations>.formation {
-    border-bottom: 1px gray green;
-}
-
-.paper>.formations>.formation>.date {
-    font-weight: bold;
-    display: inline;
-}
-
-.paper>.formations>.formation>.titre {
-    font-weight: bold;
-    font-size: 1.1em;
-    display: inline;
-}
-
-.paper>.formations>.formation>.description {
-    margin-bottom: 1em;
-}
-
-
-.paper>.competences>header {
-    margin-top: 1em;
-    font-weight: bold;
-    font-size: 1.4em;
-    border-bottom: 1px gray solid;
-}
-
-.paper>.langues>header {
-    margin-top: 1em;
-    font-weight: bold;
-    font-size: 1.4em;
-    border-bottom: 1px gray solid;
-}
-
-.paper>.reseaux>header {
-    margin-top: 1em;
-    font-weight: bold;
-    font-size: 1.4em;
-    border-bottom: 1px gray solid;
-}
 

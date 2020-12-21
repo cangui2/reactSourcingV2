@@ -46,18 +46,18 @@ function Search (props){
     const loadOtionVille =(selectValueVille,callback)=>{
         axios.get("https://127.0.0.1:8000/api/villes?nom="+selectValueVille)
             .then((vil)=>{
+
                 callback(vil.data);
+
             });
     }
     const [placeholderDepartement,setPlaceholderDepartement]=useState('select')
     const [placeholderRegions,setPlaceholderRegions]=useState('select')
     const handleChangeVille = value =>{
-        setValueRegion(value.departement.region.nom);
-        setValueDepartement(value.departement.nom);
-        setPlaceholderDepartement(value.departement.nom);
-        setPlaceholderRegions(value.departement.region.nom);
-        props.onSearchMulti(value.id);
-        console.log(value);
+
+        setValueVille(value);
+        props.onSearchMulti(value.nom);
+        console.log(value.nom+'search');
     }
 
 

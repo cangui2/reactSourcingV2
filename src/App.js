@@ -58,7 +58,8 @@ function App(props) {
     const handleCv = (cv)=>{
         axios.get(`https://127.0.0.1:8000/api/c_vs?candidat.id=`+cv)
             .then((result)=>{
-                setCvCandidat(result.data);
+                console.log(result.data[0]);
+                setCvCandidat(result.data[0]);
 
             })
     }
@@ -77,7 +78,7 @@ function App(props) {
                 <Results liste={liste} allCv={listAll} multi={villesListe} onReceiveCv={(cv)=>handleCv(cv)}/>
           </Col>
           <Col style={border}>
-                <Details cv={cvCandidat}/>
+              <Details cv={cvCandidat}/>
           </Col>
         </Row>
       </Container>

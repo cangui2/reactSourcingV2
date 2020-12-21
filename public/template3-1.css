@@ -2,19 +2,18 @@
 @font-face {
     font-family: "font1";
     src: url("fonts/fa-solid-900.woff2") format("woff2"),
-    url("fonts/fa-solid-900.woff") format("woff");
-}
+         url("fonts/fa-solid-900.woff") format("woff");
+    }
 @font-face {
-    font-family: "font2";
+    font-family: "font2";   
     src: url("fonts/fa-regular-400.woff2") format("woff2"),
-    url("fonts/fa-regular-400.woff") format("woff");
-}
+         url("fonts/fa-regular-400.woff") format("woff");
+   }
 
 
 /* Habillage layout */
 .paper {
     padding: 40px;
-    background-color: darkgrey;
     border: 2px gray solid;
     box-shadow: 10px 10px 10px gray;
     width: 21cm;
@@ -24,91 +23,60 @@
 }
 
 
-.experience {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr) 3fr;
-    grid-template-rows: repeat(2, 0.3fr) 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-
-.date-debut { grid-area: 1 / 1 / 2 / 2; }
-.date-fin { grid-area: 1 / 2 / 2 / 3; }
-.logo { grid-area: 2 / 1 / 3 / 2; }
-.entreprise { grid-area: 2 / 2 / 3 / 3; }
-.ville { grid-area: 3 / 1 / 4 / 3; }
-.titre { grid-area: 1 / 3 / 2 / 4; }
-.description { grid-area: 2 / 3 / 4 / 4; }
-
-
-.formation {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr) 3fr;
-    grid-template-rows: repeat(2, 0.3fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-.date-debut { grid-area: 1 / 1 / 2 / 2; }
-.date-fin { grid-area: 1 / 2 / 2 / 3; }
-.diplome { grid-area: 2 / 1 / 3 / 2; }
-.niveau { grid-area: 2 / 2 / 3 / 3; }
-.ecole { grid-area: 2 / 3 / 3 / 4; }
-
-
 /* Grid principal */
 .paper {
     display: grid;
     grid-template-columns: 0.6fr 0.5fr 1.5fr;
-    grid-template-rows: 0.3fr 0.2fr 0.3fr 1fr repeat(2, 0.4fr) 0.8fr;
-    grid-column-gap: 40px;
+    grid-template-rows: 0.3fr 0.2fr 0.3fr 1fr repeat(2, 0.5fr) 1fr;
+    grid-column-gap: 20px;
     grid-row-gap: 0px;
-}
-
-.profil { grid-area: 1 / 1 / 4 / 2; }
-.photo { grid-area: 1 / 2 / 3 / 3; }
-.identite { grid-area: 1 / 3 / 2 / 4; }
-.paper>.titre { grid-area: 2 / 3 / 3 / 4; }
-.intro { grid-area: 3 / 2 / 4 / 4; }
-.competences { grid-area: 4 / 1 / 5 / 2; }
-.langues { grid-area: 5 / 1 / 7 / 2; }
-.reseaux { grid-area: 7 / 1 / 8 / 2; }
-.experiences { grid-area: 4 / 2 / 6 / 4; }
-.formations { grid-area: 6 / 2 / 8 / 4; }
+    }
+    
+    .profil { grid-area: 1 / 1 / 4 / 2; }
+    .photo { grid-area: 1 / 2 / 3 / 3; }
+    .identite { grid-area: 1 / 3 / 2 / 4; }
+    .titre { grid-area: 2 / 3 / 3 / 4; }
+    .intro { grid-area: 3 / 2 / 4 / 4; }
+    .competences { grid-area: 4 / 1 / 5 / 2; }
+    .langues { grid-area: 5 / 1 / 7 / 2; }
+    .reseaux { grid-area: 7 / 1 / 8 / 2; }
+    .experiences { grid-area: 4 / 2 / 6 / 4; }
+    .formations { grid-area: 6 / 2 / 8 / 4; } 
 
 
 /********** Conditions d'impressions **********/
 
 @media print {
-    /* Sélection des zones */
-    body * {
-        visibility: hidden;
+    /* Sélection des zones */ 
+    body * { 
+        visibility: hidden; 
     }
-    .no-print {
-        display: none;
+    .no-print { 
+        display: none; 
     }
-    .paper {
-        visibility: visible; display: grid;
+    .paper { 
+        visibility: visible; display: grid; 
         margin-top: 0px !important; margin-left: 0px !important; transform: scale(1) !important;
         border: 0px;
         width: 100vw;
         height: 100vh;
     }
-    .paper * {
-        visibility: visible;
+    .paper * { 
+        visibility: visible; 
     }
-
-    /* Forçage impression background */
+    
+    /* Forçage impression background */ 
     * { -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
         color-adjust: exact !important;                 /*Firefox*/
     }
+    
+    }
 
-}
-
-
-/* Insertion Icones */
+    
+    /* Insertion Icones */
 .paper>.profil>header:before {
     font-family: "font1";
-    content: "\f007";
+    content: "\f007"; 
     margin-right: 10px;
     /* border: solid 2px;
     border-radius: 50%;
@@ -116,27 +84,27 @@
 }
 .paper>.competences>header:before {
     font-family: "font1";
-    content: "\f013";
+    content: "\f013"; 
     margin-right: 10px;
 }
 .paper>.langues>header:before {
     font-family: "font2";
-    content: "\f27a";
+    content: "\f27a"; 
     margin-right: 10px;
 }
 .paper>.reseaux>header:before {
     font-family: "font1";
-    content: "\f1e0";
+    content: "\f1e0"; 
     margin-right: 10px;
 }
 .paper>.experiences>header:before {
     font-family: "font1";
-    content: "\f0b1";
+    content: "\f0b1"; 
     margin-right: 10px;
 }
 .paper>.formations>header:before {
     font-family: "font1";
-    content: "\f19d";
+    content: "\f19d"; 
     margin-right: 10px;
 }
 
@@ -148,10 +116,10 @@ header, .paper>.identite {
 
 
 /* Paramètres bloc photo */
-.paper>.photo>.portrait>img {
-    border-radius: 50%;
-    width: 120px;
-    margin-top: 20px;
+.paper>.photo {
+   width:120px;
+   height:120px;
+   clip-path:ellipse(50% 50%);
 }
 
 
@@ -165,7 +133,7 @@ header, .paper>.identite {
 .paper>.identite>.nom {
     text-transform: uppercase;
     font-size: 3em;
-    /* margin-bottom: -10px; */
+    margin-bottom: -40px;
 }
 
 
@@ -198,7 +166,7 @@ header, .paper>.identite {
 /* Paramètres bloc Expériences */
 .paper>.experiences>header {
     text-transform: uppercase;
-    /* margin-top: 1em; */
+    margin-top: 1em;
     font-size: 1.2em;
     border-top: 1.5px darkgray solid;
     padding-top: 0.4em;
@@ -223,7 +191,7 @@ header, .paper>.identite {
 }
 .paper>.experiences>div>.experience>.titre {
     font-weight: 600;
-}
+} 
 .paper>.experiences>.experience>.description {
     margin-bottom: 1em;
 }
@@ -283,12 +251,14 @@ header, .paper>.identite {
     border-top: 1.5px darkgray solid;
     padding-top: 0.4em;
 }
-
+.description {
+    margin-left: 120px;
+    }
 
 /* Paramètres bloc Compétences */
 .paper>.competences>header {
     text-transform: uppercase;
-    /* margin-top: 1em; */
+    margin-top: 1em;
     font-size: 1.2em;
     /* border-bottom: 1.5px darkgray solid; */
 }
@@ -300,7 +270,7 @@ header, .paper>.identite {
     margin-top: 1em;
     font-size: 1.2em;
     /* border-bottom: 1.5px darkgray solid; */
-
+    
 }
 .paper>.langues>div>.langue>.libelle {
     display: inline-block;
@@ -326,15 +296,6 @@ header, .paper>.identite {
     display: none;
 }
 /* Masquage Competence Niveau */
-.paper>.competences>div>.competence>.niveau, .paper>.formations>div>.formation>.description {
-    display: none;
-}
-
-meter[value]::-webkit-meter-optimum-value {
-    background: #E9A507;
-}
-
-/* Masquage formation Description */
-.paper>.formations>div>.formation>.description {
+.paper>.competences>div>.competence>.niveau {
     display: none;
 }

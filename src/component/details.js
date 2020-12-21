@@ -21,28 +21,29 @@ function Details (props) {
             <Container fluid>
                 <Row style={{marginLeft: '0', marginRight: '0', paddingTop: '10px !important'}}>
                     <Col>
-                        {props.cv.map(cv => (
                             <Card style={styleSearch}>
                                 <Card.Body>
-                                    <Card.Title>{cv.candidat.nom}</Card.Title><Image
+                                    <Card.Title>{props.cv.candidat.nom}</Card.Title><Image
                                     style={{float: 'right', width: '15%'}} src={image} roundedCircle/>
-                                    <Card.Subtitle className="mb-2 text-muted">{cv.candidat.prenom}</Card.Subtitle>
+                                    <Card.Subtitle className="mb-2 text-muted">{props.cv.candidat.prenom}</Card.Subtitle>
                                     <Card.Text>
-                                        Adresse :{cv.candidat.adresse}
+                                        Adresse :{props.cv.candidat.adresse}
                                         <br/>
-                                        Numero de Telephone : {cv.candidat.telephone}
+                                        Numero de Telephone : {props.cv.candidat.telephone}
                                     </Card.Text>
                                     <Card.Link href="#">Card Link</Card.Link>
                                     <Card.Link href="#">Another Link</Card.Link>
                                 </Card.Body>
 
                             </Card>
-                        ))}
+                        <CVViewer cv={props.cv} />
                     </Col>
 
 
                 </Row>
-                <CVViewer cv={props.cv} />
+
+
+
             </Container>
 
         )
