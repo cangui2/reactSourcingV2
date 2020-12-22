@@ -6,13 +6,15 @@ import axios from 'axios'
 
 function Search (props){
 
-    // Recherche par mot clé
-
-    // Recherche Region via axios
-
-            // on parametre les entrées
+    // All constant useState
     const [selectValueRegion, setValueRegion]=useState(null);
-            // on fais une fonction pour recup les données
+    const [selectValueDepartement,setValueDepartement]=useState(null);
+    const [selectValueVille,setValueVille]=useState(null);
+    const [placeholderDepartement,setPlaceholderDepartement]=useState('select')
+    const [placeholderRegions,setPlaceholderRegions]=useState('select')
+
+    // Recherche Api
+
     const loadOptionRegion =(selectValueRegion,callback)=>{
         axios.get("https://127.0.0.1:8000/api/regions?nom="+ selectValueRegion)
             .then((reg)=>{
@@ -21,15 +23,6 @@ function Search (props){
 
             });
     }
-            // Si la valeur change on modifie.
-    const  handleChangeRegion= value =>{
-        setValueRegion(value);
-
-    }
-
-    // Recherche Departement
-
-    const [selectValueDepartement,setValueDepartement]=useState(null);
     const loadOptionDepartement =(selectValueDepartement,callback)=>{
         axios.get("https://127.0.0.1:8000/api/departements?nom=" + selectValueDepartement)
             .then((dep)=>{
@@ -37,12 +30,6 @@ function Search (props){
 
             });
     }
-    const handleChangeDepartement =value =>{
-        setValueDepartement(value);
-    }
-    // Recherche villes
-
-    const [selectValueVille,setValueVille]=useState(null);
     const loadOtionVille =(selectValueVille,callback)=>{
         axios.get("https://127.0.0.1:8000/api/villes?nom="+selectValueVille)
             .then((vil)=>{
@@ -51,13 +38,23 @@ function Search (props){
 
             });
     }
-    const [placeholderDepartement,setPlaceholderDepartement]=useState('select')
-    const [placeholderRegions,setPlaceholderRegions]=useState('select')
+
+
+            // Si la valeur change on modifie.
+    const  handleChangeRegion= value =>{
+        setValueRegion(value);
+
+    }
+
+    const handleChangeDepartement =value =>{
+        setValueDepartement(value);
+    }
+
     const handleChangeVille = value =>{
 
         setValueVille(value);
         props.onSearchMulti(value.nom);
-        console.log(value.nom+'search');
+
     }
 
 
@@ -92,7 +89,7 @@ function Search (props){
                             getOptionLabel={reg => reg.nom}
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
-                            placeholder={placeholderDepartement}
+                            placeholder="Saisissez la region"
                             onChange={handleChangeRegion}
                         />
                     </Form.Group>
@@ -108,7 +105,7 @@ function Search (props){
                             getOptionLabel={dep => dep.nom}
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
-                            placeholder={placeholderRegions}
+                            placeholder="Saisissez le departement"
                             onChange={handleChangeDepartement}
                         />
                     </Form.Group>
@@ -141,6 +138,8 @@ const styleSearch={
     marginTop:'10px',
     boxShadow: "10px 10px 1px #9E9E9E",
     minHeight:'90vh',
+    maxWidth:'395px',
+    position:'fixed'
 
 }
 export default Search;

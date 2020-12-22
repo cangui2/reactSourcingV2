@@ -5,16 +5,7 @@ import image from "../avatar.png"
 
 function Results (props){
 
-    //const [items , setItems]=useState();
-
-
-   // console.log(items+'results')
-
-    // useEffect(()=>{
-    //
-    //     setItems(props.titre);
-    //
-    // }, [props.titre, items])
+    // Voir pour la pagination
     let items = [];
     for (let number = 1; number <= 5; number++) {
         items.push(
@@ -33,7 +24,7 @@ function Results (props){
 
 
 
-console.log(props.liste+'dans result')
+
 
     return(
 
@@ -63,6 +54,7 @@ console.log(props.liste+'dans result')
 
                     {props.allCv.map(item => (
                         <Col>
+                            <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
                             <Card style={styleSearch}>
                                 <Card.Body>
                                     <Card.Title>{item.candidat.nom}</Card.Title><Image style={{float: 'right',width:'15%'}} src={image} roundedCircle />
@@ -74,10 +66,12 @@ console.log(props.liste+'dans result')
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
+                            </div>
                         </Col>
                         ))}
 
                     {props.multi.map(item => (
+                        <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
                         <Card style={styleSearch}>
                             <Card.Body>
                                 <Card.Title>{item.candidat.nom}</Card.Title><Image style={{float: 'right',width:'15%'}} src={image} roundedCircle />
@@ -87,10 +81,9 @@ console.log(props.liste+'dans result')
                                     <br/>
                                     Numero de Telephone : {item.candidat.telephone}
                                 </Card.Text>
-                                <Card.Link href="#">Card Link</Card.Link>
-                                <Card.Link href="#">Another Link</Card.Link>
                             </Card.Body>
                         </Card>
+                        </div>
                     ))}
                 </Col>
 

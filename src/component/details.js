@@ -15,7 +15,7 @@ function Details (props) {
         setNumPages(numPages);
     }
 
-    console.log(props.cv);
+
     if (props.cv.length !== 0)
         return (
             <Container fluid>
@@ -31,8 +31,6 @@ function Details (props) {
                                         <br/>
                                         Numero de Telephone : {props.cv.candidat.telephone}
                                     </Card.Text>
-                                    <Card.Link href="#">Card Link</Card.Link>
-                                    <Card.Link href="#">Another Link</Card.Link>
                                 </Card.Body>
 
                             </Card>
