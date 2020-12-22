@@ -31,8 +31,6 @@ function Results (props){
 
 
                 <Col>
-
-
                     {props.liste.map(item => (
                         <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
                             <Card style={styleSearch} >
@@ -50,9 +48,9 @@ function Results (props){
                         </div>
                     ))}
 
-
+                    <Col>
                     {props.allCv.map(item => (
-                        <Col>
+
                             <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
                             <Card style={styleSearch}>
                                 <Card.Body>
@@ -66,9 +64,10 @@ function Results (props){
                                 </Card.Body>
                             </Card>
                             </div>
-                        </Col>
-                        ))}
 
+                        ))}
+                    </Col>
+                    <Col>
                     {props.multi.map(item => (
                         <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
                         <Card style={styleSearch}>
@@ -84,6 +83,7 @@ function Results (props){
                         </Card>
                         </div>
                     ))}
+                    </Col>
                 </Col>
 
 

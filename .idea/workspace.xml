@@ -20,12 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e620d11-6883-4074-bf2f-0d7c450c4010" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/CVViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/CVViewer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/details.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/results.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/search.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +76,7 @@
       <workItem from="1608535725469" duration="20494000" />
       <workItem from="1608623799774" duration="1364000" />
       <workItem from="1608626594970" duration="6192000" />
-      <workItem from="1608642954688" duration="2899000" />
+      <workItem from="1608642954688" duration="3414000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1608295580900</created>
@@ -166,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608633301089</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="debut de correction responsive">
+      <created>1608646885499</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1608646885499</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,16 +198,18 @@
     <MESSAGE value="fix cv" />
     <MESSAGE value="clean code" />
     <MESSAGE value="suppression card" />
-    <option name="LAST_COMMIT_MESSAGE" value="suppression card" />
+    <MESSAGE value="debut de correction responsive" />
+    <option name="LAST_COMMIT_MESSAGE" value="debut de correction responsive" />
   </component>
   <component name="WindowStateProjectService">
     <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1608626704094">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1608626704094" />
-    <state x="2393" y="240" key="Vcs.Push.Dialog.v2" timestamp="1608633323829">
-      <screen x="1920" y="0" width="1680" height="1010" />
+    <state x="541" y="247" key="Vcs.Push.Dialog.v2" timestamp="1608646887227">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="541" y="247" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1608646887227" />
     <state x="2393" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1680.1010@1920.0.1680.1010" timestamp="1608633323829" />
   </component>
 </project>
