@@ -68,7 +68,7 @@ function Search (props){
                 <Button variant="info"  onClick={()=>{props.onIdRecruteurChanged(6)}}>Ma Cvthèque</Button>{' '}
                 </Col>
                 <Col >
-                    <Button variant="info"  onClick={()=>{props.onRequestAllCv()}} >Cv Candidatheque</Button>{' '}
+                    <Button variant="info"  onClick={()=>{props.onRequestAllCv()}} >Candidatheque</Button>{' '}
                 </Col>
             </Row>
             <Row>
