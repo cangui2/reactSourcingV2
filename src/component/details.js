@@ -19,24 +19,7 @@ function Details (props) {
     if (props.cv.length !== 0)
         return (
             <Container fluid>
-                <Row style={{marginLeft: '0', marginRight: '0', paddingTop: '10px !important'}}>
-                    <Col>
-                            <Card style={styleSearch}>
-                                <Card.Body>
-                                    <Card.Title>{props.cv.candidat.nom}</Card.Title><Image
-                                    style={{float: 'right', width: '15%'}} src={image} roundedCircle/>
-                                    <Card.Subtitle className="mb-2 text-muted">{props.cv.candidat.prenom}</Card.Subtitle>
-                                    <Card.Text>
-                                        Adresse :{props.cv.candidat.adresse}
-                                        <br/>
-                                        Numero de Telephone : {props.cv.candidat.telephone}
-                                    </Card.Text>
-                                </Card.Body>
 
-                            </Card>
-
-                    </Col>
-                </Row>
                 <Row>
                     <Col>
                         <CVViewer cv={props.cv} />
