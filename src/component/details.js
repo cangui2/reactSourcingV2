@@ -18,17 +18,17 @@ function Details (props) {
 
     if (props.cv.length !== 0)
         return (
-            <Container fluid>
 
-                <Row>
-                    <Col>
+
+
+
                         <CVViewer cv={props.cv} />
-                    </Col>
-                </Row>
 
 
 
-            </Container>
+
+
+
 
         )
     else if (props.cv.length === 0) {

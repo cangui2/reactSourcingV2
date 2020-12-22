@@ -77,14 +77,14 @@ function App(props) {
 
   return (
       <Container fluid style={ styleSearch}>
-        <Row >
+        <Row md={4}>
           <Col >
               <Search onIdRecruteurChanged={ (ti) => handleIdRecruteurChanged(ti) } onRequestAllCv={handleAllCvRequest} onSearchMulti={(mutli)=>handleMulti(mutli)}/>
           </Col>
-          <Col  style={border}>
+          <Col lg='4' style={border}>
                 <Results liste={liste} allCv={listAll} multi={villesListe} onReceiveCv={(cv)=>handleCv(cv)}/>
           </Col>
-          <Col style={border}>
+          <Col  style={border}>
               <Details cv={cvCandidat}/>
           </Col>
         </Row>

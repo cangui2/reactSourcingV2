@@ -28,8 +28,7 @@ function Results (props){
 
     return(
 
-        <Container>
-            <Row style={{marginLeft:'0',marginRight:'0',paddingTop:'10px '}}>
+
 
                 <Col>
 
@@ -90,8 +89,7 @@ function Results (props){
 
 
 
-            </Row>
-        </Container>
+
 
 
 
