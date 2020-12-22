@@ -36,10 +36,13 @@ function Details (props) {
                                 </Card.Body>
 
                             </Card>
+
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
                         <CVViewer cv={props.cv} />
                     </Col>
-
-
                 </Row>
 
 

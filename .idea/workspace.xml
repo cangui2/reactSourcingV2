@@ -4,12 +4,9 @@
     <list default="true" id="9e620d11-6883-4074-bf2f-0d7c450c4010" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template1.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/template1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template3-1.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/template3-1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/CVViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/CVViewer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/details.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +32,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../git" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -62,6 +59,8 @@
       <workItem from="1608281934561" duration="9982000" />
       <workItem from="1608307856609" duration="613000" />
       <workItem from="1608535725469" duration="20494000" />
+      <workItem from="1608623799774" duration="1364000" />
+      <workItem from="1608626594970" duration="3302000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1608295580900</created>
@@ -139,5 +138,11 @@
     <MESSAGE value="ajout on c jamais" />
     <MESSAGE value="template cv" />
     <option name="LAST_COMMIT_MESSAGE" value="template cv" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1608626704094">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1608626704094" />
   </component>
 </project>

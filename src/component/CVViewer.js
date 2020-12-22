@@ -9,20 +9,21 @@ const CVViewer = (props) => {
 
 
         return (
-            <div className="row">
-                <link rel="stylesheet" href="/template4.css"/>
+            <div className="row" >
+                <link rel="stylesheet" href="/template3-7.css"/>
 
 
                 <div  className="col-sm-12 paper-container">
 
-                    <div className="paper">
+                    <div className="paper"style={paperStyle}>
                         <section className="identite">
                                 <div className="nom">{props.cv.candidat.prenom} {props.cv.candidat.nom}</div>
+                            <section className="photo">
+                                <div className="portrait"><img src={avatar} style={{width:'15%',paddingTop:'32px',paddingLeft:'3px'}}/></div>
+                            </section>
                             </section>
 
-                        <section className="photo">
-                            <div className="portrait"><img src={avatar}/></div>
-                        </section>
+
 
                         <section className="profil">
 
@@ -135,3 +136,11 @@ const CVViewer = (props) => {
 }
 
 export default CVViewer;
+
+const paperStyle ={
+    width:'50vw',
+    height:'50vh',
+    marginLeft:'-150px',
+    marginTop:'-100px',
+    marginRight:'-120px'
+}

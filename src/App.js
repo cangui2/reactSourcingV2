@@ -24,6 +24,7 @@ function App(props) {
 
                     setListe(result.data);
                     setListeAll([]);
+                    setCvCandidat([]);
                 }
             );
 
@@ -36,6 +37,7 @@ function App(props) {
             .then((result)=>{
                 setListeAll(result.data);
                 setListe([]);
+                setCvCandidat([]);
             })
     }
 
