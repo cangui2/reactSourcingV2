@@ -17,7 +17,8 @@ function App(props) {
     const[regionListe,setRegionlist]=useState([]);
     const[departementListe,setDepartementlist]=useState([]);
     const[villesListe,setVilleListe]=useState([]);
-
+    const [metierListe,setMetierListe]=useState([]);
+    const [competenceListe,setCompetenceListe]=useState([]);
 
     //  Recherche via Api
 
@@ -70,9 +71,28 @@ function App(props) {
 
             })
     }
+    const handlMotCle =(value)=>{
+        if (Number.isInteger(value)){
+            axios.get(`https://127.0.0.1:8000/api/metiers?rome.id=`+value)
+                .then((result)=>{
+                    console.log(result.data[0]);
+                    setCvCandidat(result.data[0]);
+
+                })
+        }
+        else {
+            axios.get(`https://127.0.0.1:8000/api/metiers?libelle=`+value)
+                .then((result)=>{
+                    console.log(result.data[0]);
+                    setCvCandidat(result.data[0]);
+
+                })
+        }
 
 
+    }
 
+console.log(listAll);
 
 
   return (

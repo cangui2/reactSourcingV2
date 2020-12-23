@@ -70,7 +70,7 @@ function Search (props){
                 <Col >
                     <Button variant="info"  onClick={()=>{props.onRequestAllCv()}} >Candidatheque</Button>{' '}
                 </Col>
-            </Row>x
+            </Row>
             <Row >
                 <Col>
                     <Form.Group controlId="formGridAddress1">
