@@ -22,8 +22,10 @@
     <list default="true" id="9e620d11-6883-4074-bf2f-0d7c450c4010" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/results.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../git" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -210,16 +212,5 @@
     <MESSAGE value="suppression card" />
     <MESSAGE value="debut de correction responsive" />
     <option name="LAST_COMMIT_MESSAGE" value="debut de correction responsive" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1608626704094">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1608626704094" />
-    <state x="541" y="247" key="Vcs.Push.Dialog.v2" timestamp="1608653618426">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="541" y="247" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1608653618426" />
-    <state x="2393" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1680.1010@1920.0.1680.1010" timestamp="1608633323829" />
   </component>
 </project>

@@ -31,6 +31,7 @@ function Results (props){
 
 
                 <Col>
+
                     {props.liste.map(item => (
                         <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
                             <Card style={styleSearch} >
@@ -85,14 +86,6 @@ function Results (props){
                     ))}
                     </Col>
                 </Col>
-
-
-
-
-
-
-
-
 
     )
 

@@ -4,7 +4,6 @@ import {pdfjs} from 'react-pdf'
 import image from "../avatar.png";
 import CVViewer from "./CVViewer";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
 
 function Details (props) {
@@ -19,16 +18,7 @@ function Details (props) {
     if (props.cv.length !== 0)
         return (
 
-
-
-
                         <CVViewer cv={props.cv} />
-
-
-
-
-
-
 
         )
     else if (props.cv.length === 0) {

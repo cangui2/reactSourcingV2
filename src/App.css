@@ -1,6 +1,7 @@
 body{
   background-image: url("sourcing.jpg");
-  background-size: cover;
+  width: auto;
+ /* background-size: cover;*/
 }
 .App {
   text-align: center;

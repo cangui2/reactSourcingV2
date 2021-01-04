@@ -97,14 +97,14 @@ console.log(listAll);
 
   return (
       <Container fluid style={ styleSearch}>
-        <Row md={4}>
-          <Col >
+        <Row >
+          <Col sm >
               <Search onIdRecruteurChanged={ (ti) => handleIdRecruteurChanged(ti) } onRequestAllCv={handleAllCvRequest} onSearchMulti={(mutli)=>handleMulti(mutli)}/>
           </Col>
-          <Col lg='4' style={border}>
+          <Col sm style={border}>
                 <Results liste={liste} allCv={listAll} multi={villesListe} onReceiveCv={(cv)=>handleCv(cv)}/>
           </Col>
-          <Col  style={border}>
+          <Col xs style={border}>
               <Details cv={cvCandidat}/>
           </Col>
         </Row>
@@ -120,6 +120,7 @@ const border={
 const styleSearch={
 
 
-    minHeight:"90vh"
+    minHeight:"90vh",
+
 
 }
