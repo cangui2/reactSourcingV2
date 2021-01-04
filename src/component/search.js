@@ -41,7 +41,7 @@ function Search (props){
 
 
             // Si la valeur change on modifie.
-    const  handleChangeRegion= value =>{
+    const  handleChangeRegion= value => {
         setValueRegion(value);
 
     }
@@ -54,6 +54,13 @@ function Search (props){
 
         setValueVille(value);
         props.onSearchMulti(value.nom);
+
+    }
+
+    const handleKeywordChange = value =>{
+
+        //setValueVille(value);
+        props.onKeywordChange(value);
 
     }
 
@@ -75,7 +82,10 @@ function Search (props){
                 <Col>
                     <Form.Group controlId="formGridAddress1">
                         <Form.Label>Mot clé</Form.Label>
-                        <Form.Control placeholder="Code rome, Competence, etc ..."/>
+                        <Form.Control
+                            placeholder="Code rome, Competence, etc ..."
+                            onChange={handleKeywordChange}
+                        />
                     </Form.Group>
                 </Col>
             </Row>
