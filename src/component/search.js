@@ -82,7 +82,7 @@ function Search (props){
                     <Form.Group controlId="formGridAddress1">
                         <Form.Label>Mot clé</Form.Label>
                         <Form.Control
-                            placeholder="Code rome, Competence, etc ..."
+                            placeholder="Metier, Competence ..."
                             onChange={handleKeywordChange}
                         />
                     </Form.Group>

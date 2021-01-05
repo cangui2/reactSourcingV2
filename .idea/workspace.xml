@@ -19,13 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e620d11-6883-4074-bf2f-0d7c450c4010" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="9e620d11-6883-4074-bf2f-0d7c450c4010" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609759498944</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="mise a jour v3 avec api sourcing">
+      <created>1609847212223</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1609847212223</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +220,7 @@
     <MESSAGE value="suppression card" />
     <MESSAGE value="debut de correction responsive" />
     <MESSAGE value="fix bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug" />
+    <MESSAGE value="mise a jour v3 avec api sourcing" />
+    <option name="LAST_COMMIT_MESSAGE" value="mise a jour v3 avec api sourcing" />
   </component>
 </project>
