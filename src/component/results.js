@@ -5,26 +5,6 @@ import image from "../avatar.png"
 
 function Results (props){
 
-    // Voir pour la pagination
-    let items = [];
-    for (let number = 1; number <= 5; number++) {
-        items.push(
-            <Pagination.Item key={number}>
-                {number}
-            </Pagination.Item>,
-        );
-    }
-    const paginationBasic = (
-        <div>
-            <Pagination>{items}</Pagination>
-            <br />
-        </div>
-    );
-
-
-
-
-
 
     return(
 
@@ -33,58 +13,22 @@ function Results (props){
                 <Col>
 
                     {props.liste.map(item => (
-                        <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
+                        <div onClick={()=>{props.onReceiveCv(item.id)}}>
                             <Card style={styleSearch} >
 
                                 <Card.Body  >
-                                    <Card.Title>{item.candidat.nom} </Card.Title> <Image style={{float: 'right',width:'15%'}} src={image} roundedCircle />
-                                    <Card.Subtitle className="mb-2 text-muted">{item.candidat.prenom}</Card.Subtitle>
+                                    <Card.Title>{item.nom} </Card.Title> <Image style={{float: 'right',width:'15%'}} src={image} roundedCircle />
+                                    <Card.Subtitle className="mb-2 text-muted">{item.prenom}</Card.Subtitle>
                                     <Card.Text>
-                                        Adresse :{item.candidat.adresse}
+                                        Adresse :{item.adresse}
                                         <br/>
-                                        Numero de Telephone : {item.candidat.telephone}
+                                        Numero de Telephone : {item.telephone}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
                         </div>
                     ))}
 
-                    <Col>
-                    {props.allCv.map(item => (
-
-                            <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
-                            <Card style={styleSearch}>
-                                <Card.Body>
-                                    <Card.Title>{item.candidat.nom}</Card.Title><Image style={{float: 'right',width:'15%'}} src={image} roundedCircle />
-                                    <Card.Subtitle className="mb-2 text-muted">{item.candidat.prenom}</Card.Subtitle>
-                                    <Card.Text>
-                                        Adresse :{item.candidat.adresse}
-                                        <br/>
-                                        Numero de Telephone : {item.candidat.telephone}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            </div>
-
-                        ))}
-                    </Col>
-                    <Col>
-                    {props.multi.map(item => (
-                        <div onClick={()=>{props.onReceiveCv(item.candidat.id)}}>
-                        <Card style={styleSearch}>
-                            <Card.Body>
-                                <Card.Title>{item.candidat.nom}</Card.Title><Image style={{float: 'right',width:'15%'}} src={image} roundedCircle />
-                                <Card.Subtitle className="mb-2 text-muted">{item.candidat.prenom}</Card.Subtitle>
-                                <Card.Text>
-                                    Adresse :{item.candidat.adresse}
-                                    <br/>
-                                    Numero de Telephone : {item.candidat.telephone}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        </div>
-                    ))}
-                    </Col>
                 </Col>
 
     )

@@ -10,11 +10,9 @@ function Search (props){
     const [selectValueRegion, setValueRegion]=useState(null);
     const [selectValueDepartement,setValueDepartement]=useState(null);
     const [selectValueVille,setValueVille]=useState(null);
-    const [placeholderDepartement,setPlaceholderDepartement]=useState('select')
-    const [placeholderRegions,setPlaceholderRegions]=useState('select')
-
+    const [item,setItem]=useState(null);
+    const [keyWord,setKeyWord]=useState(null);
     // Recherche Api
-
     const loadOptionRegion =(selectValueRegion,callback)=>{
         axios.get("https://127.0.0.1:8000/api/regions?nom="+ selectValueRegion)
             .then((reg)=>{
@@ -51,17 +49,18 @@ function Search (props){
     }
 
     const handleChangeVille = value =>{
-
         setValueVille(value);
-        props.onSearchMulti(value.nom);
+
+
+        props.onDemandeCvChanged('ville=',value.nom);
 
     }
 
-    const handleKeywordChange = value =>{
+    const handleKeywordChange = (e) =>{
 
-        //setValueVille(value);
-        props.onKeywordChange(value);
-
+        setItem('keyword=');
+        setKeyWord(e.target.value);
+        props.onDemandeCvChanged(item,keyWord);
     }
 
 
@@ -72,10 +71,10 @@ function Search (props){
         <Container fluid style={styleSearch}>
             <Row style={{marginLeft:'0',marginRight:'0',paddingTop:'10px'}}>
                 <Col >
-                <Button variant="info"  onClick={()=>{props.onIdRecruteurChanged(6)}}>Ma Cvthèque</Button>{' '}
+                <Button variant="info"  onClick={()=>{props.onDemandeCvChanged('recruteur','=6')}}>Ma Cvthèque</Button>{' '}
                 </Col>
                 <Col >
-                    <Button variant="info"  onClick={()=>{props.onRequestAllCv()}} >Candidatheque</Button>{' '}
+                    <Button variant="info"  onClick={()=>{props.onDemandeCvChanged()}} >Candidatheque</Button>{' '}
                 </Col>
             </Row>
             <Row >
