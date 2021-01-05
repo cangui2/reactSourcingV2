@@ -68,7 +68,7 @@ function Search (props){
 
 
     return (
-        <Container fluid style={styleSearch}>
+        <Container  style={styleSearch}>
             <Row style={{marginLeft:'0',marginRight:'0',paddingTop:'10px'}}>
                 <Col >
                 <Button variant="info"  onClick={()=>{props.onDemandeCvChanged('recruteur','=6')}}>Ma Cvthèque</Button>{' '}
@@ -148,7 +148,7 @@ const styleSearch={
     boxShadow: "10px 10px 1px #9E9E9E",
     minHeight:'90vh',
     maxWidth:'395px',
-    position:'fixed'
+
 
 }
 export default Search;

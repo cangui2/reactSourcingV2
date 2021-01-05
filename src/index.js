@@ -42,18 +42,18 @@ console.log(liste);
     return (
         <Container fluid style={ styleSearch}>
             <Row >
-                <Col sm >
+                <Col sm={3} >
                     <Search
                         onDemandeCvChanged={ (item,value) => handleCvRequest(item,value) }
 
                     />
                 </Col>
 
-                <Col sm style={border}>
+                <Col sm={4} style={border}>
                     <Results liste={liste} onReceiveCv={(cv)=>handleCv(cv)}/>
                 </Col>
 
-                <Col xs style={border}>
+                <Col sm={5} style={border}>
                     <Details cv={cvCandidat}/>
                 </Col>
 

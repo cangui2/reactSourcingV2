@@ -1,4 +1,4 @@
-import {Container, Row, Card, Col, Pagination, Image, Media, Button} from "react-bootstrap";
+import {Container, Row, Card, Col, Pagination, Image, Media, Button, CardColumns} from "react-bootstrap";
 import React from "react";
 import image from "../avatar.png"
 
@@ -9,11 +9,12 @@ function Results (props){
     return(
 
 
-
+            <Row>
                 <Col>
 
                     {props.liste.map(item => (
                         <div onClick={()=>{props.onReceiveCv(item.id)}}>
+                            <CardColumns>
                             <Card style={styleSearch} >
 
                                 <Card.Body  >
@@ -26,11 +27,12 @@ function Results (props){
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
+                            </CardColumns>
                         </div>
                     ))}
 
                 </Col>
-
+            </Row>
     )
 
 
