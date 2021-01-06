@@ -1,22 +1,26 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import {Button, Card, Container} from 'react-bootstrap';
 import avatar from '../avatar.png'
 
 import './CV.css';
+import * as PropTypes from "prop-types";
 
 
+class Fragment extends React.Component {
+    render() {
+        return null;
+    }
+}
+
+Fragment.propTypes = {children: PropTypes.node};
 const CVViewer = (props) => {
 
 
         return (
 
 
-
-
-
-
                     <div className="paper"style={paperStyle}>
-                        <link rel="stylesheet" href="/template3-7.css"/>
+                        <link rel="stylesheet" href="/template3-7.css" />
                         <section className="identite">
                                 <div className="nom">{props.cv.candidat.prenom} {props.cv.candidat.nom}</div>
                             <section className="photo">
@@ -139,9 +143,8 @@ const CVViewer = (props) => {
 export default CVViewer;
 
 const paperStyle ={
-    //width:'50vw',
-    height:'50vh',
-   // marginLeft:'-150px',
-    marginTop:'-100px',
+
+    marginTop:'-250px',
+    //width:'auto'
    // marginRight:'-120px'
 }

@@ -15,10 +15,13 @@ const App = (props) => {
     const [item,setItem]=useState(null);
     const [ cvCandidat, setCvCandidat ]=useState([]);
     /*-------------------------------------------------------------*/
-    const handleCvRequest = (item,value) =>{
+    const handleCvRequest = (param) =>{
 
-        console.log(axios.get (`https://127.0.0.1:8000/api/sourcing?`+item +value));
-        axios.get (`https://127.0.0.1:8000/api/sourcing?`+item +value)
+        // param -> keyword=sql&ville=amiens&recruteur=12
+        console.log(axios.get (`https://127.0.0.1:8000/api/sourcing?`+param));
+
+        axios.get (`https://127.0.0.1:8000/api/sourcing?`+param)
+
             .then((result)=>{
 
                 setListe(result.data);
@@ -38,13 +41,13 @@ const App = (props) => {
             })
     }
 
-console.log(liste);
+
     return (
         <Container fluid style={ styleSearch}>
             <Row >
                 <Col sm={3} >
                     <Search
-                        onDemandeCvChanged={ (item,value) => handleCvRequest(item,value) }
+                        onDemandeCvChanged={ (param) => handleCvRequest(param) }
 
                     />
                 </Col>

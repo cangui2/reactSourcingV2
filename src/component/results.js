@@ -23,7 +23,10 @@ function Results (props){
                                     <Card.Text>
                                         Adresse :{item.adresse}
                                         <br/>
+                                        Ville:{item.ville}
+                                        <br/>
                                         Numero de Telephone : {item.telephone}
+
                                     </Card.Text>
                                 </Card.Body>
                             </Card>

@@ -1,10 +1,18 @@
 import React, {useState} from "react";
-import {Card, Col, Container, Image, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Image, Row} from "react-bootstrap";
 import {pdfjs} from 'react-pdf'
 import image from "../avatar.png";
 import CVViewer from "./CVViewer";
+import * as PropTypes from "prop-types";
 
 
+class Fragment extends React.Component {
+    render() {
+        return null;
+    }
+}
+
+Fragment.propTypes = {children: PropTypes.node};
 
 function Details (props) {
     const [numPages, setNumPages] = useState(null);
@@ -18,7 +26,11 @@ function Details (props) {
     if (props.cv.length !== 0)
         return (
 
-                        <CVViewer cv={props.cv} />
+
+
+                <CVViewer cv={props.cv} />
+
+
 
         )
     else if (props.cv.length === 0) {
