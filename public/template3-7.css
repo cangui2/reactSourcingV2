@@ -14,6 +14,8 @@
     min-height: 29.7cm;
     transform: scale(0.8);
     overflow-wrap: break-word;
+    background-color: #eeeeee;
+    margin-top: 50px;
 }
 
 
@@ -25,7 +27,7 @@
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     }
-    
+
     .identite { grid-area: 1 / 1 / 2 / 6; }
     .titre { grid-area: 2 / 1 / 3 / 6; }
     .intro { grid-area: 3 / 1 / 4 / 4; }
@@ -40,34 +42,34 @@
 /********** Conditions d'impressions **********/
 
 @media print {
-    /* Sélection des zones */ 
-    body * { 
-        visibility: hidden; 
+    /* Sélection des zones */
+    body * {
+        visibility: hidden;
     }
-    .no-print { 
-        display: none; 
+    .no-print {
+        display: none;
     }
-    .paper { 
-        visibility: visible; display: grid; 
+    .paper {
+        visibility: visible; display: grid;
         margin-top: 0px !important; margin-left: 0px !important; transform: scale(1) !important;
         border: 0px;
         width: 100vw;
         height: 100vh;
     }
-    .paper * { 
-        visibility: visible; 
+    .paper * {
+        visibility: visible;
     }
-    
-    /* Forçage impression background */ 
+
+    /* Forçage impression background */
     * { -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
         color-adjust: exact !important;                 /*Firefox*/
     }
-    
+
     }
 
 /* .paper>.identite>.nom:before {
     font-family: "font1";
-    content: "\f556"; 
+    content: "\f556";
     padding-right: 20px;
 } */
 

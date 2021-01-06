@@ -11,30 +11,31 @@ import './index.css';
 
 const App = (props) => {
     // all const
-    const [ liste, setListe ] = useState([]);
-    const [item,setItem]=useState(null);
-    const [ cvCandidat, setCvCandidat ]=useState([]);
+    const [liste, setListe] = useState([]);
+    const [item, setItem] = useState(null);
+    const [cvCandidat, setCvCandidat] = useState([]);
     /*-------------------------------------------------------------*/
-    const handleCvRequest = (param) =>{
+    const handleCvRequest = (param) => {
 
         // param -> keyword=sql&ville=amiens&recruteur=12
-        console.log(axios.get (`https://127.0.0.1:8000/api/sourcing?`+param));
+        console.log(axios.get(`https://127.0.0.1:8000/api/sourcing?` + param));
 
-        axios.get (`https://127.0.0.1:8000/api/sourcing?`+param)
+        axios.get(`https://127.0.0.1:8000/api/sourcing?` + param)
 
-            .then((result)=>{
+            .then((result) => {
 
                 setListe(result.data);
+                setCvCandidat([]);
             })
     }
     // Cv Candidat
 
 
-    const handleCv = (cv)=>{
-        console.log(cv +'requete id');
-        console.log(axios.get(`https://127.0.0.1:8000/api/c_vs?metier.id=`+cv));
-        axios.get(`https://127.0.0.1:8000/api/c_vs?id=`+cv)
-            .then((result)=>{
+    const handleCv = (cv) => {
+        console.log(cv + 'requete id');
+        console.log(axios.get(`https://127.0.0.1:8000/api/c_vs?metier.id=` + cv));
+        axios.get(`https://127.0.0.1:8000/api/c_vs?id=` + cv)
+            .then((result) => {
 
                 setCvCandidat(result.data[0]);
 
@@ -43,17 +44,17 @@ const App = (props) => {
 
 
     return (
-        <Container fluid style={ styleSearch}>
-            <Row >
-                <Col sm={3} >
+        <Container fluid style={styleSearch}>
+            <Row>
+                <Col sm={3}>
                     <Search
-                        onDemandeCvChanged={ (param) => handleCvRequest(param) }
+                        onDemandeCvChanged={(param) => handleCvRequest(param)}
 
                     />
                 </Col>
 
                 <Col sm={4} style={border}>
-                    <Results liste={liste} onReceiveCv={(cv)=>handleCv(cv)}/>
+                    <Results liste={liste} onReceiveCv={(cv) => handleCv(cv)}/>
                 </Col>
 
                 <Col sm={5} style={border}>
@@ -65,28 +66,28 @@ const App = (props) => {
     );
 }
 
-const styleSearch={
+const styleSearch = {
 
 
-    minHeight:"90vh",
+    minHeight: "90vh",
 
 
 }
 
-const border={
+const border = {
 
 
-    minHeight:"90vh",
+    minHeight: "90vh",
 
 
 }
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('react_sourcing')
+    <React.StrictMode>
+        <App/>
+    </React.StrictMode>,
+    document.getElementById('react_sourcing')
 );
 
 

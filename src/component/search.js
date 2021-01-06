@@ -7,8 +7,7 @@ import axios from 'axios'
 function Search (props){
 
     // All constant useState
-    const [valueRegion, setValueRegion]=useState('');
-    const [valueDepartement,setValueDepartement]=useState('');
+    const [valueMetier, setMetier]=useState([]);
     const [valueVille,setValueVille]=useState('');
     const [keyWord,setKeyWord]=useState('');
     const [recruteur,setRecruteur]=useState('6');
@@ -19,21 +18,16 @@ function Search (props){
 
 
     // Recherche Api
-    const loadOptionRegion =(valueRegion,callback)=>{
-        axios.get("https://127.0.0.1:8000/api/regions?nom="+ valueRegion)
-            .then((reg)=>{
-                callback(reg.data);
-
-
-            });
-    }
-    const loadOptionDepartement =(valueDepartement,callback)=>{
-        axios.get("https://127.0.0.1:8000/api/departements?nom=" + valueDepartement)
-            .then((dep)=>{
-                callback(dep.data);
+    const loadOptionMetier =(valueMetier,callback)=>{
+        console.log(axios.get("https://127.0.0.1:8000/api/metiers?libelle="+ valueMetier))
+        axios.get("https://127.0.0.1:8000/api/metiers?libelle="+ valueMetier)
+            .then((met)=>{
+                callback(met.data);
+                console.log(met.data);
 
             });
     }
+
     const loadOtionVille =(value,callback)=>{
         axios.get("https://127.0.0.1:8000/api/villes?nom="+value)
             .then((vil)=>{
@@ -45,18 +39,26 @@ function Search (props){
 
 
             // Si la valeur change on modifie.
-    const  handleChangeRegion= value => {
-        setValueRegion(value);
+    const  handleChangeMetier= value => {
+        setMetier(value);
 
-    }
-
-    const handleChangeDepartement =value =>{
-        setValueDepartement(value);
     }
 
     const handleChangeVille = value =>{
+        if (!value && statusRecruteur === true){
+            setValueVille('')
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+''+'&recruteur='+recruteur);
+        }
+        if (!value && statusAll === true){
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+'');
+        }
+        if(!value){
+
+        }
+        else {
         setValueVille(value.nom);
         fVille(value.nom);
+        }
 
     }
     const fVille =(ville) =>{
@@ -89,6 +91,7 @@ function Search (props){
         setStatusRecruteur(false);
         setChecked2(true);
         setChecked(false);
+
         props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille);
     }
     const handleClickRecruteur =(e)=>{
@@ -98,6 +101,7 @@ function Search (props){
         setChecked(true);
         setChecked2(false);
         setStatusALL(false);
+
     }
 
 
@@ -150,31 +154,15 @@ function Search (props){
             <Row>
                 <Col>
                     <Form.Group  controlId="formGridState">
-                        <Form.Label>Regions</Form.Label>
+                        <Form.Label>Metier</Form.Label>
                         <AsyncSelect
                             className="mb-2"
-                            loadOptions={loadOptionRegion}
-                            getOptionLabel={reg => reg.nom}
+                            loadOptions={loadOptionMetier}
+                            getOptionLabel={met => met.libelle}
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
-                            placeholder="Saisissez la region"
-                            onChange={handleChangeRegion}
-                        />
-                    </Form.Group>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Form.Group  controlId="formGridState">
-                        <Form.Label>Departement</Form.Label>
-                        <AsyncSelect
-                            className="mb-2"
-                            loadOptions={loadOptionDepartement}
-                            getOptionLabel={dep => dep.nom}
-                            //getOptionLabel={ (met) => { return met.nom } }
-                            components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
-                            placeholder="Saisissez le departement"
-                            onChange={handleChangeDepartement}
+                            placeholder="Saisissez le metier"
+                            onChange={handleChangeMetier}
                         />
                     </Form.Group>
                 </Col>
@@ -187,6 +175,7 @@ function Search (props){
                             className="mb-2"
                             loadOptions={loadOtionVille}
                             getOptionLabel={vil => vil.nom}
+                            isClearable={true}
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
                             placeholder="Saisissez la ville.."
