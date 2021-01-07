@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
-import React, {useEffect, useState} from "react";
-import {Container, Row, Card, Col, Pagination, Image, Media, Button} from "react-bootstrap";
+import React, {useState} from "react";
+import {Container, Row, Col} from "react-bootstrap";
 import axios from 'axios'
 import Search from "./component/search";
 import Results from "./component/results";

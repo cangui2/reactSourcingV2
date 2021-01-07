@@ -1,7 +1,8 @@
-import {Container, Button, Row, Col, Form, ToggleButton} from "react-bootstrap";
+import {Container, Row, Col, Form, ToggleButton, Popover} from "react-bootstrap";
 import AsyncSelect from 'react-select/async';
-import {useCallback, useState} from "react";
+import { useState} from "react";
 import axios from 'axios'
+import {Range} from "react-range";
 
 
 function Search (props){
@@ -15,6 +16,7 @@ function Search (props){
     const [statusRecruteur, setStatusRecruteur]=useState(false);
     const [checked, setChecked] = useState(false);
     const [checked2, setChecked2] = useState(false);
+    const [range,setRange]=useState([0]);
 
 
     // Recherche Api
@@ -58,6 +60,7 @@ function Search (props){
         else {
         setValueVille(value.nom);
         fVille(value.nom);
+
         }
 
     }
@@ -69,6 +72,7 @@ function Search (props){
         if(statusAll === true ){
             props.onDemandeCvChanged('keyword='+keyWord+'&ville='+ville);
         }
+        console.log(ville);
     }
 
     const handleKeywordChange = (e) =>{
@@ -103,8 +107,6 @@ function Search (props){
         setStatusALL(false);
 
     }
-
-
 
 
 
@@ -180,8 +182,50 @@ function Search (props){
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
                             placeholder="Saisissez la ville.."
                             onChange={handleChangeVille}
+
                         />
                     </Form.Group>
+                    <Range
+                        step={0.1}
+                        min={0}
+                        max={150}
+                        values={range}
+
+                        onChange={(values) => setRange(values)}
+                        onFinalChange={(values => setRange(values))}
+                        renderTrack={({ props, children }) => (
+                            <div
+                                {...props}
+
+                                style={{
+                                    ...props.style,
+                                    height: '6px',
+                                    width: '100%',
+                                    backgroundColor: '#ccc'
+                                }}
+                            >
+                                {children}
+                            </div>
+                        )}
+                        renderThumb={({ props }) => (
+                            <div
+
+                                {...props}
+
+                                style={{
+                                    ...props.style,
+
+                                    height: '22px',
+                                    width: '22px',
+                                    backgroundColor: '#999'
+                                }}
+                            />
+
+                        )}
+                    />
+                    <output style={{ marginTop: "30px" }} id="output">
+                       Distance sélectionner {range} Km
+                    </output>
                 </Col>
             </Row>
         </Container>

@@ -22,10 +22,9 @@
     <list default="true" id="9e620d11-6883-4074-bf2f-0d7c450c4010" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/template3-7.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/template3-7.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/template1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/template1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,8 @@
       <workItem from="1608642954688" duration="7613000" />
       <workItem from="1608709592899" duration="607000" />
       <workItem from="1609856052242" duration="3632000" />
-      <workItem from="1609925147505" duration="20578000" />
+      <workItem from="1609925147505" duration="21104000" />
+      <workItem from="1610005068315" duration="5194000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1608295580900</created>
@@ -219,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609943795703</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="ajout du bouton clear">
+      <created>1609950887009</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1609950887009</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +260,7 @@
     <MESSAGE value="mise a jour v3 avec api sourcing" />
     <MESSAGE value="mise a jour boostrap" />
     <MESSAGE value="mutli critere fonctionnelle et button radio ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="mutli critere fonctionnelle et button radio ok" />
+    <MESSAGE value="ajout du bouton clear" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout du bouton clear" />
   </component>
 </project>
