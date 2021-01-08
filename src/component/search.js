@@ -19,13 +19,14 @@ function Search (props){
     const [range,setRange]=useState([0]);
 
 
+
     // Recherche Api
     const loadOptionMetier =(valueMetier,callback)=>{
         console.log(axios.get("https://127.0.0.1:8000/api/metiers?libelle="+ valueMetier))
         axios.get("https://127.0.0.1:8000/api/metiers?libelle="+ valueMetier)
             .then((met)=>{
                 callback(met.data);
-                console.log(met.data);
+
 
             });
     }
@@ -34,7 +35,7 @@ function Search (props){
         axios.get("https://127.0.0.1:8000/api/villes?nom="+value)
             .then((vil)=>{
                 callback(vil.data);
-                console.log(vil.data);
+
 
             });
     }
@@ -58,8 +59,8 @@ function Search (props){
 
         }
         else {
-        setValueVille(value.nom);
-        fVille(value.nom);
+        setValueVille(value.id);
+        fVille(value.id);
 
         }
 
@@ -106,6 +107,11 @@ function Search (props){
         setChecked2(false);
         setStatusALL(false);
 
+    }
+    const handleRange = (value) =>{
+        console.log(valueVille);
+        props.onDemandeCvChanged('keyword'+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+value)
+        setRange(value);
     }
 
 
@@ -191,8 +197,8 @@ function Search (props){
                         max={150}
                         values={range}
 
-                        onChange={(values) => setRange(values)}
-                        onFinalChange={(values => setRange(values))}
+                        onChange={handleRange}
+                        onFinalChange={handleRange}
                         renderTrack={({ props, children }) => (
                             <div
                                 {...props}

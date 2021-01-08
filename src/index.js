@@ -25,6 +25,7 @@ const App = (props) => {
             .then((result) => {
 
                 setListe(result.data);
+                console.log(result.data)
                 setCvCandidat([]);
             })
     }

@@ -15,12 +15,7 @@ class Fragment extends React.Component {
 Fragment.propTypes = {children: PropTypes.node};
 
 function Details (props) {
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
 
-    function onDocumentLoadSuccess({numPages}) {
-        setNumPages(numPages);
-    }
 
 
     if (props.cv.length !== 0)
