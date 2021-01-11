@@ -55,11 +55,11 @@ const App = (props) => {
                     />
                 </Col>
 
-                <Col sm={4} style={border}>
+                <Col sm={4} md={5} style={border}>
                     <Results liste={liste} onReceiveCv={(cv) => handleCv(cv)}/>
                 </Col>
 
-                <Col sm={5} style={border}>
+                <Col sm={5} md={4} style={border}>
                     <Details cv={cvCandidat}/>
                 </Col>
 

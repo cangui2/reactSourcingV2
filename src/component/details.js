@@ -6,13 +6,7 @@ import CVViewer from "./CVViewer";
 import * as PropTypes from "prop-types";
 
 
-class Fragment extends React.Component {
-    render() {
-        return null;
-    }
-}
 
-Fragment.propTypes = {children: PropTypes.node};
 
 function Details (props) {
 
@@ -20,13 +14,7 @@ function Details (props) {
 
     if (props.cv.length !== 0)
         return (
-
-
-
                 <CVViewer cv={props.cv} />
-
-
-
         )
     else if (props.cv.length === 0) {
         return (

@@ -1,38 +1,39 @@
-import {Container, Row, Col, Form, ToggleButton, Popover} from "react-bootstrap";
+import {Col, Container, Form, Row, ToggleButton} from "react-bootstrap";
 import AsyncSelect from 'react-select/async';
-import { useState} from "react";
+import {useState} from "react";
 import axios from 'axios'
 import {Range} from "react-range";
 
 
-function Search (props){
+function Search(props) {
 
     // All constant useState
-    const [valueMetier, setMetier]=useState([]);
-    const [valueVille,setValueVille]=useState('');
-    const [keyWord,setKeyWord]=useState('');
-    const [recruteur,setRecruteur]=useState('6');
-    const [statusAll, setStatusALL]=useState(false);
-    const [statusRecruteur, setStatusRecruteur]=useState(false);
+    const [valueMetier, setMetier] = useState([]);
+    const [valueVille, setValueVille] = useState('');
+    const [keyWord, setKeyWord] = useState('');
+    const [recruteur, setRecruteur] = useState('6');
+    const [statusAll, setStatusALL] = useState(false);
+    const [statusRecruteur, setStatusRecruteur] = useState(false);
     const [checked, setChecked] = useState(false);
     const [checked2, setChecked2] = useState(false);
-    const [range,setRange]=useState([1]);
-
+    const [range, setRange] = useState([1]);
+    const [disabled,setDisabled]=useState(true);
+    const [display,setDisplay] =useState("none")
 
 
     // Recherche Api
-    const loadOptionMetier =(valueMetier,callback)=>{
-        console.log(axios.get("https://127.0.0.1:8000/api/metiers?libelle="+ valueMetier))
-        axios.get("https://127.0.0.1:8000/api/metiers?libelle="+ valueMetier)
-            .then((met)=>{
+    const loadOptionMetier = (valueMetier, callback) => {
+        console.log(axios.get("https://127.0.0.1:8000/api/metiers?libelle=" + valueMetier))
+        axios.get("https://127.0.0.1:8000/api/metiers?libelle=" + valueMetier)
+            .then((met) => {
                 callback(met.data);
 
 
             });
     }
-    const loadOtionVille =(value,callback)=>{
-        axios.get("https://127.0.0.1:8000/api/villes?nom="+value)
-            .then((vil)=>{
+    const loadOtionVille = (value, callback) => {
+        axios.get("https://127.0.0.1:8000/api/villes?nom=" + value)
+            .then((vil) => {
                 callback(vil.data);
 
 
@@ -40,58 +41,54 @@ function Search (props){
     }
 
 
-            // Si la valeur change on modifie.
-    const  handleChangeMetier= value => {
+    // Si la valeur change on modifie.
+    const handleChangeMetier = value => {
         setMetier(value);
 
     }
 
-    const handleChangeVille = (value) =>{
+    const handleChangeVille = (value) => {
         setValueVille(value.id);
+        setDisabled(false);
 
-        if (statusRecruteur === true){
+        if (statusRecruteur === true) {
 
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+value.id+'&recruteur='+recruteur+'&rayon='+range);
-            //setValueVille(value.id);
-            console.log('keyword='+keyWord+'&ville='+value.id+'&recruteur='+recruteur+'&rayon='+range);
+            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + value.id + '&recruteur=' + recruteur + '&rayon=' + range);
+
+
         }
-        if (statusAll === true){
+        if (statusAll === true) {
 
 
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+value.id+'&rayon='+range);
-            //setValueVille(value.id);
-            console.log('keyword='+keyWord+'&ville='+valueVille+'&rayon='+range);
+            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + value.id + '&rayon=' + range);
+
+
         }
-
 
 
     }
 
 
+    const kChange = (e) => {
+        setKeyWord(e.target.value)
+        if (statusRecruteur === true) {
+            if (valueVille === '') {
+                props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&recruteur=' + recruteur + '&rayon=0');
+            } else {
+                props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&recruteur=' + recruteur + '&rayon=' + range);
 
-
-    const kChange = (e)=>{
-    setKeyWord(e.target.value)
-        if(statusRecruteur === true){
-            if(valueVille === ''){
-                props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon=0');
-            }
-            else {
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+range);
-            console.log(keyWord+'recruteur');
             }
         }
-        if(statusAll === true){
-            if(valueVille === '') {
-                props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon=0');
-            }
-            else {
-            console.log('all');
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon='+range);
+        if (statusAll === true) {
+            if (valueVille === '') {
+                props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=0');
+            } else {
+
+                props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=' + range);
             }
         }
     }
-    const handleClickAll = (e)=>{
+    const handleClickAll = (e) => {
 
         setStatusALL(true);
         setStatusRecruteur(false);
@@ -99,54 +96,51 @@ function Search (props){
         setChecked(false)
 
 
-        if (range>1){
+        if (range > 1) {
 
-        props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon='+range);
+            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=' + range);
         }
 
-        if (valueVille === ''){
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon=0')
-        }
-        else {
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon='+range)
+        if (valueVille === '') {
+            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=0')
+        } else {
+            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=' + range)
         }
     }
-    const handleClickRecruteur =(e)=>{
+    const handleClickRecruteur = (e) => {
 
-        if(range>1){
-            console.log('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+range)
-        props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+range);
-        }
-        else {
-            console.log('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+range);
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon=0');
+        if (range > 1) {
+
+            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&recruteur=' + recruteur + '&rayon=' + range);
+        } else {
+
+            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&recruteur=' + recruteur + '&rayon=0');
         }
         setStatusRecruteur(true);
         setChecked(true);
         setChecked2(false);
         setStatusALL(false);
 
-        console.log(range+'click recruteur');
 
     }
-    const handleRange = (value) =>{
+    const handleRange = (value) => {
         setRange(value);
-        console.log(range+'range');
-        if(statusRecruteur===true){
-        props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+value)
+
+        if (statusRecruteur === true) {
+            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&recruteur=' + recruteur + '&rayon=' + value)
         }
-        if(statusAll===true){
-        props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon='+value)
+        if (statusAll === true) {
+            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=' + value)
         }
 
+
     }
-console.log(keyWord);
 
 
     return (
-        <Container  style={styleSearch}>
-            <Row style={{marginLeft:'0',marginRight:'0',paddingTop:'10px'}}>
-                <Col >
+        <Container style={styleSearch}>
+            <Row style={{marginLeft: '0', marginRight: '0', paddingTop: '10px'}}>
+                <Col>
                     <ToggleButton
                         type="checkbox"
                         variant="info"
@@ -160,7 +154,7 @@ console.log(keyWord);
                 <Button variant="info"  onClick={handleClickRecruteur}>Ma Cvthèque</Button>{' '}
                 */}
                 </Col>
-                <Col >
+                <Col>
                     <ToggleButton
                         type="checkbox"
                         variant="info"
@@ -175,7 +169,7 @@ console.log(keyWord);
                     */}
                 </Col>
             </Row>
-            <Row >
+            <Row>
                 <Col>
                     <Form.Group controlId="formGridAddress1">
                         <Form.Label>Mot clé</Form.Label>
@@ -190,7 +184,7 @@ console.log(keyWord);
             </Row>
             <Row>
                 <Col>
-                    <Form.Group  controlId="formGridState">
+                    <Form.Group controlId="formGridState">
                         <Form.Label>Metier</Form.Label>
                         <AsyncSelect
                             className="mb-2"
@@ -206,7 +200,7 @@ console.log(keyWord);
             </Row>
             <Row>
                 <Col>
-                    <Form.Group  controlId="formGridState">
+                    <Form.Group controlId="formGridState">
                         <Form.Label>Ville</Form.Label>
                         <AsyncSelect
                             className="mb-2"
@@ -225,9 +219,10 @@ console.log(keyWord);
                         min={1}
                         max={150}
                         values={range}
+                        disabled={disabled}
                         onChange={values => setRange(values)}
                         onFinalChange={handleRange}
-                        renderTrack={({ props, children }) => (
+                        renderTrack={({props, children}) => (
                             <div
                                 {...props}
 
@@ -241,7 +236,7 @@ console.log(keyWord);
                                 {children}
                             </div>
                         )}
-                        renderThumb={({ props }) => (
+                        renderThumb={({props}) => (
                             <div
 
                                 {...props}
@@ -257,23 +252,23 @@ console.log(keyWord);
 
                         )}
                     />
-                    <output style={{ marginTop: "30px" }} id="output">
-                       Distance sélectionner {range} Km
+                    <output style={{marginTop: "30px" }} id="output">
+                        Distance sélectionner {range-1} Km
                     </output>
                 </Col>
             </Row>
         </Container>
     )
 };
-const styleSearch={
+const styleSearch = {
 
     //border:'2px solid #000000',
-    backgroundColor:'white',
-    opacity:'0.9',
-    marginTop:'10px',
+    backgroundColor: 'white',
+    opacity: '0.9',
+    marginTop: '10px',
     boxShadow: "10px 10px 1px #9E9E9E",
-    minHeight:'90vh',
-    maxWidth:'395px',
+    minHeight: '90vh',
+    maxWidth: '395px',
 
 
 }

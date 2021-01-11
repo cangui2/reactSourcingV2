@@ -144,7 +144,9 @@ export default CVViewer;
 
 const paperStyle ={
 
-    marginTop:'-250px',
+    marginTop:'0px',
+    transform:'scale(1)',
+    gridTemplateRows:'',
     //width:'auto'
    // marginRight:'-120px'
 }
