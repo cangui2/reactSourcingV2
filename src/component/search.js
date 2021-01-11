@@ -46,39 +46,35 @@ function Search (props){
 
     }
 
-    const handleChangeVille = value =>{
+    const handleChangeVille = (value) =>{
         setValueVille(value.id);
+
         if (statusRecruteur === true){
 
             props.onDemandeCvChanged('keyword='+keyWord+'&ville='+value.id+'&recruteur='+recruteur+'&rayon='+range);
-            setValueVille(value.id);
+            //setValueVille(value.id);
             console.log('keyword='+keyWord+'&ville='+value.id+'&recruteur='+recruteur+'&rayon='+range);
         }
         if (statusAll === true){
 
 
             props.onDemandeCvChanged('keyword='+keyWord+'&ville='+value.id+'&rayon='+range);
-            setValueVille(value.id);
-            console.log('la');
+            //setValueVille(value.id);
+            console.log('keyword='+keyWord+'&ville='+valueVille+'&rayon='+range);
         }
-
 
 
 
     }
 
-    // const handleKeywordChange = (e) =>{
-    //     setKeyWord(e.target.value);
-    //     console.log(keyWord);
-    //     kChange(e.target.value);
-    //
-    //
-    // }
+
+
+
     const kChange = (e)=>{
     setKeyWord(e.target.value)
         if(statusRecruteur === true){
             if(valueVille === ''){
-                props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur);
+                props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon=0');
             }
             else {
             props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+range);
@@ -87,7 +83,7 @@ function Search (props){
         }
         if(statusAll === true){
             if(valueVille === '') {
-                props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille);
+                props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon=0');
             }
             else {
             console.log('all');
@@ -107,8 +103,12 @@ function Search (props){
 
         props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon='+range);
         }
+
+        if (valueVille === ''){
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon=0')
+        }
         else {
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille)
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon='+range)
         }
     }
     const handleClickRecruteur =(e)=>{
@@ -118,8 +118,8 @@ function Search (props){
         props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+range);
         }
         else {
-            console.log('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur);
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur);
+            console.log('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+range);
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon=0');
         }
         setStatusRecruteur(true);
         setChecked(true);
@@ -133,10 +133,10 @@ function Search (props){
         setRange(value);
         console.log(range+'range');
         if(statusRecruteur===true){
-        props.onDemandeCvChanged('keyword'+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+value)
+        props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+value)
         }
         if(statusAll===true){
-        props.onDemandeCvChanged('keyword'+keyWord+'&ville='+valueVille+'&rayon='+value)
+        props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon='+value)
         }
 
     }
@@ -168,7 +168,7 @@ console.log(keyWord);
                         value="1"
                         onChange={handleClickAll}
                     >
-                        Cv Candidathèque
+                        Candidathèque
                     </ToggleButton>
                     {/*
                     <Button variant="info"  onClick={handleClickAll} >Candidatheque</Button>{' '}

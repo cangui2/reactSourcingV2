@@ -22,9 +22,7 @@
     <list default="true" id="9e620d11-6883-4074-bf2f-0d7c450c4010" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/CVViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/CVViewer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +88,7 @@
       <workItem from="1608626594970" duration="6192000" />
       <workItem from="1608642954688" duration="7613000" />
       <workItem from="1608709592899" duration="607000" />
-      <workItem from="1610350166877" duration="17298000" />
+      <workItem from="1610350166877" duration="21204000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1608295580900</created>
@@ -204,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610123587568</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="update">
+      <created>1610373913549</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1610373913549</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
