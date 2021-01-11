@@ -18,9 +18,9 @@ const App = (props) => {
     const handleCvRequest = (param) => {
 
         // param -> keyword=sql&ville=amiens&recruteur=12
-        console.log(axios.get(`https://127.0.0.1:8000/api/sourcing?` + param));
-
-        axios.get(`https://127.0.0.1:8000/api/sourcing?` + param)
+        console.log(param);
+        console.log(axios.get(`https://127.0.0.1:8000/api/sourcing?`+ param));
+        axios.get(`https://127.0.0.1:8000/api/sourcing?`+ param)
 
             .then((result) => {
 
@@ -28,6 +28,7 @@ const App = (props) => {
                 console.log(result.data)
                 setCvCandidat([]);
             })
+            .catch(error => console.log(error));
     }
     // Cv Candidat
 

@@ -16,7 +16,7 @@ function Search (props){
     const [statusRecruteur, setStatusRecruteur]=useState(false);
     const [checked, setChecked] = useState(false);
     const [checked2, setChecked2] = useState(false);
-    const [range,setRange]=useState([0]);
+    const [range,setRange]=useState([1]);
 
 
 
@@ -30,7 +30,6 @@ function Search (props){
 
             });
     }
-
     const loadOtionVille =(value,callback)=>{
         axios.get("https://127.0.0.1:8000/api/villes?nom="+value)
             .then((vil)=>{
@@ -48,72 +47,100 @@ function Search (props){
     }
 
     const handleChangeVille = value =>{
-        if (!value && statusRecruteur === true){
-            setValueVille('')
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+''+'&recruteur='+recruteur);
-        }
-        if (!value && statusAll === true){
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+'');
-        }
-        if(!value){
-
-        }
-        else {
         setValueVille(value.id);
-        fVille(value.id);
-
-        }
-
-    }
-    const fVille =(ville) =>{
         if (statusRecruteur === true){
 
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+ville+'&recruteur='+recruteur);
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+value.id+'&recruteur='+recruteur+'&rayon='+range);
+            setValueVille(value.id);
+            console.log('keyword='+keyWord+'&ville='+value.id+'&recruteur='+recruteur+'&rayon='+range);
         }
-        if(statusAll === true ){
-            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+ville);
+        if (statusAll === true){
+
+
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+value.id+'&rayon='+range);
+            setValueVille(value.id);
+            console.log('la');
         }
-        console.log(ville);
+
+
+
+
     }
 
-    const handleKeywordChange = (e) =>{
-        setKeyWord(e.target.value);
-        kChange(e.target.value);
-
-
-    }
-    const kChange = (key)=>{
+    // const handleKeywordChange = (e) =>{
+    //     setKeyWord(e.target.value);
+    //     console.log(keyWord);
+    //     kChange(e.target.value);
+    //
+    //
+    // }
+    const kChange = (e)=>{
+    setKeyWord(e.target.value)
         if(statusRecruteur === true){
-            props.onDemandeCvChanged('keyword='+key+'&ville='+valueVille+'&recruteur='+recruteur);
+            if(valueVille === ''){
+                props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur);
+            }
+            else {
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+range);
+            console.log(keyWord+'recruteur');
+            }
         }
         if(statusAll === true){
-
-            props.onDemandeCvChanged('keyword='+key+'&ville='+valueVille);
+            if(valueVille === '') {
+                props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille);
+            }
+            else {
+            console.log('all');
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon='+range);
+            }
         }
     }
     const handleClickAll = (e)=>{
+
         setStatusALL(true);
         setStatusRecruteur(false);
         setChecked2(true);
-        setChecked(false);
+        setChecked(false)
 
-        props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille);
+
+        if (range>1){
+
+        props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&rayon='+range);
+        }
+        else {
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille)
+        }
     }
     const handleClickRecruteur =(e)=>{
 
-        props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur);
+        if(range>1){
+            console.log('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+range)
+        props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+range);
+        }
+        else {
+            console.log('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur);
+            props.onDemandeCvChanged('keyword='+keyWord+'&ville='+valueVille+'&recruteur='+recruteur);
+        }
         setStatusRecruteur(true);
         setChecked(true);
         setChecked2(false);
         setStatusALL(false);
 
+        console.log(range+'click recruteur');
+
     }
     const handleRange = (value) =>{
-        console.log(valueVille);
-        props.onDemandeCvChanged('keyword'+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+value)
         setRange(value);
-    }
+        console.log(range+'range');
+        if(statusRecruteur===true){
+        props.onDemandeCvChanged('keyword'+keyWord+'&ville='+valueVille+'&recruteur='+recruteur+'&rayon='+value)
+        }
+        if(statusAll===true){
+        props.onDemandeCvChanged('keyword'+keyWord+'&ville='+valueVille+'&rayon='+value)
+        }
 
+    }
+console.log(keyWord);
 
 
     return (
@@ -141,7 +168,7 @@ function Search (props){
                         value="1"
                         onChange={handleClickAll}
                     >
-                        Ma Cvthèque
+                        Cv Candidathèque
                     </ToggleButton>
                     {/*
                     <Button variant="info"  onClick={handleClickAll} >Candidatheque</Button>{' '}
@@ -153,8 +180,10 @@ function Search (props){
                     <Form.Group controlId="formGridAddress1">
                         <Form.Label>Mot clé</Form.Label>
                         <Form.Control
+
                             placeholder="Metier, Competence ..."
-                            onChange={handleKeywordChange}
+                            onChange={kChange}
+
                         />
                     </Form.Group>
                 </Col>
@@ -183,7 +212,7 @@ function Search (props){
                             className="mb-2"
                             loadOptions={loadOtionVille}
                             getOptionLabel={vil => vil.nom}
-                            isClearable={true}
+                            isClearable
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
                             placeholder="Saisissez la ville.."
@@ -193,11 +222,10 @@ function Search (props){
                     </Form.Group>
                     <Range
                         step={0.1}
-                        min={0}
+                        min={1}
                         max={150}
                         values={range}
-
-                        onChange={handleRange}
+                        onChange={values => setRange(values)}
                         onFinalChange={handleRange}
                         renderTrack={({ props, children }) => (
                             <div

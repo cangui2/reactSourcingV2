@@ -14,7 +14,7 @@ class Fragment extends React.Component {
 
 Fragment.propTypes = {children: PropTypes.node};
 const CVViewer = (props) => {
-
+console.log(props.cv);
 
         return (
 
