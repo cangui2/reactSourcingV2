@@ -1,24 +1,25 @@
-import {Col, Container, Form, Row, ToggleButton} from "react-bootstrap";
+import {ButtonGroup, Col, Container, Form, Row, ToggleButton} from "react-bootstrap";
 import AsyncSelect from 'react-select/async';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from 'axios'
 import {Range} from "react-range";
+
 
 
 function Search(props) {
 
     // All constant useState
-    const [valueMetier, setMetier] = useState([]);
+    const [valueMetier, setValueMetier] = useState([]);
     const [valueVille, setValueVille] = useState('');
     const [keyWord, setKeyWord] = useState('');
     const [recruteur, setRecruteur] = useState('6');
     const [statusAll, setStatusALL] = useState(false);
     const [statusRecruteur, setStatusRecruteur] = useState(false);
-    const [checked, setChecked] = useState(false);
-    const [checked2, setChecked2] = useState(false);
+    const [checked, setChecked] = useState('info');
     const [range, setRange] = useState([1]);
+    const [finalRange, setFinalRange] = useState([1]);
     const [disabled,setDisabled]=useState(true);
-    const [display,setDisplay] =useState("none")
+
 
 
     // Recherche Api
@@ -27,157 +28,87 @@ function Search(props) {
         axios.get("https://127.0.0.1:8000/api/metiers?libelle=" + valueMetier)
             .then((met) => {
                 callback(met.data);
-
-
             });
     }
     const loadOtionVille = (value, callback) => {
         axios.get("https://127.0.0.1:8000/api/villes?nom=" + value)
             .then((vil) => {
                 callback(vil.data);
-
-
             });
     }
 
 
     // Si la valeur change on modifie.
     const handleChangeMetier = value => {
-        setMetier(value);
+        setValueMetier(value);
 
     }
-
-    const handleChangeVille = (value) => {
-        setValueVille(value.id);
-        setDisabled(false);
-
-        if (statusRecruteur === true) {
-
-            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + value.id + '&recruteur=' + recruteur + '&rayon=' + range);
-
-
-        }
-        if (statusAll === true) {
-
-
-            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + value.id + '&rayon=' + range);
-
-
-        }
-
-
-    }
-
-
-    const kChange = (e) => {
-        setKeyWord(e.target.value)
-        if (statusRecruteur === true) {
-            if (valueVille === '') {
-                props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&recruteur=' + recruteur + '&rayon=0');
-            } else {
-                props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&recruteur=' + recruteur + '&rayon=' + range);
-
+    const changeParam = () => {
+        let params = [];
+            if (keyWord) {
+                params.push('keyword=' + keyWord);
             }
-        }
-        if (statusAll === true) {
-            if (valueVille === '') {
-                props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=0');
-            } else {
-
-                props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=' + range);
+            if (statusRecruteur) {
+                params.push('recruteur=6');
             }
-        }
+            if (valueVille){
+                params.push('ville='+valueVille);
+                params.push('rayon='+range);
+            }
+
+            props.onDemandeCvChanged(params.join("&"));
     }
     const handleClickAll = (e) => {
-
-        setStatusALL(true);
         setStatusRecruteur(false);
-        setChecked2(true);
-        setChecked(false)
-
-
-        if (range > 1) {
-
-            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=' + range);
-        }
-
-        if (valueVille === '') {
-            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=0')
-        } else {
-            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=' + range)
-        }
+        changeParam();
     }
     const handleClickRecruteur = (e) => {
-
-        if (range > 1) {
-
-            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&recruteur=' + recruteur + '&rayon=' + range);
-        } else {
-
-            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&recruteur=' + recruteur + '&rayon=0');
-        }
-        setStatusRecruteur(true);
-        setChecked(true);
-        setChecked2(false);
-        setStatusALL(false);
-
-
-    }
-    const handleRange = (value) => {
-        setRange(value);
-
-        if (statusRecruteur === true) {
-            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&recruteur=' + recruteur + '&rayon=' + value)
-        }
-        if (statusAll === true) {
-            props.onDemandeCvChanged('keyword=' + keyWord + '&ville=' + valueVille + '&rayon=' + value)
+            setStatusRecruteur(true);
+            changeParam();
         }
 
-
-    }
+    useEffect(() => {
+        changeParam();
+    }, [keyWord, valueVille, finalRange])
 
 
     return (
         <Container style={styleSearch}>
             <Row style={{marginLeft: '0', marginRight: '0', paddingTop: '10px'}}>
                 <Col>
+                    <ButtonGroup toggle className="mb-2">
                     <ToggleButton
                         type="checkbox"
-                        variant="info"
-                        checked={checked}
-                        value="1"
-                        onChange={handleClickRecruteur}
+                        variant='info'
+                        value="2"
+                        //onChange={}
+                        onClick={handleClickRecruteur}
                     >
                         Ma Cvthèque
                     </ToggleButton>
-                    {/*
-                <Button variant="info"  onClick={handleClickRecruteur}>Ma Cvthèque</Button>{' '}
-                */}
+                    </ButtonGroup>
                 </Col>
                 <Col>
+                    <ButtonGroup toggle className="mb-2">
                     <ToggleButton
-                        type="checkbox"
+                        type="radio"
                         variant="info"
-                        checked={checked2}
                         value="1"
                         onChange={handleClickAll}
+                        onClick={event => {setStatusRecruteur(false)}}
                     >
                         Candidathèque
                     </ToggleButton>
-                    {/*
-                    <Button variant="info"  onClick={handleClickAll} >Candidatheque</Button>{' '}
-                    */}
-                </Col>
+                </ButtonGroup>
+                                    </Col>
             </Row>
             <Row>
                 <Col>
                     <Form.Group controlId="formGridAddress1">
                         <Form.Label>Mot clé</Form.Label>
                         <Form.Control
-
                             placeholder="Metier, Competence ..."
-                            onChange={kChange}
-
+                            onChange={e=>{setKeyWord(e.target.value)}}
                         />
                     </Form.Group>
                 </Col>
@@ -206,12 +137,12 @@ function Search(props) {
                             className="mb-2"
                             loadOptions={loadOtionVille}
                             getOptionLabel={vil => vil.nom}
-                            isClearable
+                            isClearable={true}
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
                             placeholder="Saisissez la ville.."
-                            onChange={handleChangeVille}
-
+                            onChange={value=>{setValueVille(value.id);console.log(value.id);setDisabled(false)}}
+                            //onInputChange={changeParam}
                         />
                     </Form.Group>
                     <Range
@@ -221,11 +152,10 @@ function Search(props) {
                         values={range}
                         disabled={disabled}
                         onChange={values => setRange(values)}
-                        onFinalChange={handleRange}
+                        onFinalChange={values => setFinalRange(values)}
                         renderTrack={({props, children}) => (
                             <div
                                 {...props}
-
                                 style={{
                                     ...props.style,
                                     height: '6px',
@@ -240,7 +170,6 @@ function Search(props) {
                             <div
 
                                 {...props}
-
                                 style={{
                                     ...props.style,
 
@@ -249,7 +178,6 @@ function Search(props) {
                                     backgroundColor: '#999'
                                 }}
                             />
-
                         )}
                     />
                     <output style={{marginTop: "30px" }} id="output">
