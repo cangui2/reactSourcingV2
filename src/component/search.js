@@ -1,4 +1,4 @@
-import {ButtonGroup, Col, Container, Form, Row, ToggleButton} from "react-bootstrap";
+import {ButtonGroup, Col, Container, Form, Row, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
 import AsyncSelect from 'react-select/async';
 import {useEffect, useState} from "react";
 import axios from 'axios'
@@ -76,30 +76,29 @@ function Search(props) {
         <Container style={styleSearch}>
             <Row style={{marginLeft: '0', marginRight: '0', paddingTop: '10px'}}>
                 <Col>
-                    <ButtonGroup toggle className="mb-2">
+                    <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
                     <ToggleButton
                         type="checkbox"
                         variant='info'
-                        value="2"
+                        value={2}
                         //onChange={}
                         onClick={handleClickRecruteur}
                     >
                         Ma Cvthèque
                     </ToggleButton>
-                    </ButtonGroup>
-                </Col>
-                <Col>
-                    <ButtonGroup toggle className="mb-2">
+
+                        &emsp;
+
                     <ToggleButton
                         type="radio"
                         variant="info"
-                        value="1"
+                        value={1}
                         onChange={handleClickAll}
                         onClick={event => {setStatusRecruteur(false)}}
                     >
                         Candidathèque
                     </ToggleButton>
-                </ButtonGroup>
+                </ToggleButtonGroup>
                                     </Col>
             </Row>
             <Row>
@@ -141,7 +140,7 @@ function Search(props) {
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
                             placeholder="Saisissez la ville.."
-                            onChange={value=>{setValueVille(value.id);console.log(value.id);setDisabled(false)}}
+                            onChange={value=>{setValueVille(value.id);setDisabled(false)}}
                             //onInputChange={changeParam}
                         />
                     </Form.Group>

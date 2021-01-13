@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e620d11-6883-4074-bf2f-0d7c450c4010" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/results.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/search.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +90,7 @@
       <workItem from="1608709592899" duration="607000" />
       <workItem from="1610350166877" duration="25773000" />
       <workItem from="1610456845741" duration="6491000" />
-      <workItem from="1610524069252" duration="9820000" />
+      <workItem from="1610524069252" duration="13347000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1608295580900</created>
@@ -225,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610382382823</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="update">
+      <created>1610537484604</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1610537484604</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,10 +263,10 @@
     <MESSAGE value="suppression card" />
     <MESSAGE value="debut de correction responsive" />
     <MESSAGE value="fix bug" />
-    <MESSAGE value="update" />
     <MESSAGE value="update 2" />
     <MESSAGE value="boostrap update" />
-    <option name="LAST_COMMIT_MESSAGE" value="boostrap update" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
