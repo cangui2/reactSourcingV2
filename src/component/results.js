@@ -6,8 +6,7 @@ import image from "../avatar.png"
 function Results (props){
 
     const [select, setSelect]=useState(false)
-    console.log(select);
-
+    console.log(props.list);
 
 
 
@@ -20,10 +19,10 @@ function Results (props){
 
                     {props.liste.map((item,index) => (
 
-                        <div key={index} onClick={()=>{props.onReceiveCv(item.id);setSelect(index)}} >
+                        <div  onClick={()=>{props.onReceiveCv(item.id);setSelect(index)}} >
 
                             <CardColumns>
-                            <Card style={styleSearch}>
+                            <Card style={styleSearch} key={index}>
 
                                 <Card.Body>
 
@@ -58,11 +57,14 @@ export default Results;
 const styleSearch={
 
 
-    width: '38rem',
+    width: '30rem',
     marginTop:'10px',
     boxShadow: "10px 10px 1px #9E9E9E",
     //backgroundColor:'black',
     opacity:'0.9',
+
+
+
 
 
 }

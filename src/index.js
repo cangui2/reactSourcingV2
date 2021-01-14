@@ -48,18 +48,18 @@ const App = (props) => {
     return (
         <Container fluid style={styleSearch}>
             <Row>
-                <Col sm={3}>
+                <Col md={3} >
                     <Search
                         onDemandeCvChanged={(param) => handleCvRequest(param)}
 
                     />
-                </Col>
+                </Col >
 
-                <Col sm={4} md={5} style={border}>
+                <Col md={4} style={border}>
                     <Results liste={liste} onReceiveCv={(cv) => handleCv(cv)}/>
                 </Col>
 
-                <Col sm={5} md={4} style={border}>
+                <Col md={5}  style={border}>
                     <Details cv={cvCandidat}/>
                 </Col>
 

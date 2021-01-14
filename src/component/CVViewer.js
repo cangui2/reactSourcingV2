@@ -146,7 +146,7 @@ const paperStyle ={
 
     marginTop:'0px',
     transform:'scale(1)',
-    gridTemplateRows:'',
+    //gridTemplateRows:'0fr 0fr',
     width:'auto'
    // marginRight:'-120px'
 }
