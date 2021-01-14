@@ -74,7 +74,7 @@ function Search(props) {
                         type="checkbox"
                         variant='info'
                         value={2}
-                        onChange={event => setStatusRecruteur(true)}
+                        onChange={ () => setStatusRecruteur(true)}
                         //onClick={setStatusRecruteur(true)}
                     >
                         Ma Cvthèque
@@ -86,7 +86,7 @@ function Search(props) {
                         type="radio"
                         variant="info"
                         value={1}
-                        onChange={event => setStatusRecruteur(false)}
+                        onChange={ () => setStatusRecruteur(false)}
                         //onClick={}
                     >
                         Candidathèque
@@ -133,7 +133,7 @@ function Search(props) {
                             //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
                             placeholder="Saisissez la ville.."
-                            onChange={value=>{setValueVille(value.id);setDisabled(false)}}
+                            onChange={value=>{ if(value) {setValueVille(value.id);setDisabled(false)} else {setDisabled(true)}}}
                             //onInputChange={changeParam}
                         />
                     </Form.Group>
@@ -173,7 +173,7 @@ function Search(props) {
                         )}
                     />
                     <output style={{marginTop: "30px" }} id="output">
-                        Distance sélectionner {range-1} Km
+                        Distance sélectionnée {range-1} Km
                     </output>
                 </Col>
             </Row>

@@ -43,3 +43,12 @@ body{
     transform: rotate(360deg);
   }
 }
+
+.select {
+  background-color: aqua;
+  font-weight: bold;
+}
+
+.active {
+  font-weight: bold;
+}

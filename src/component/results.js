@@ -22,7 +22,7 @@ function Results (props){
                         <div  onClick={()=>{props.onReceiveCv(item.id);setSelect(index)}} >
 
                             <CardColumns>
-                            <Card style={styleSearch} key={index}>
+                            <Card style={styleSearch} key={index} className={select==index?'select':''}>
 
                                 <Card.Body>
 
@@ -71,4 +71,6 @@ const styleSearch={
 const test ={
     backgroundColor:'black',
 }
+
+
 
