@@ -58,18 +58,11 @@ function Search(props) {
 
             props.onDemandeCvChanged(params.join("&"));
     }
-    const handleClickAll = (e) => {
-        setStatusRecruteur(false);
-        changeParam();
-    }
-    const handleClickRecruteur = (e) => {
-            setStatusRecruteur(true);
-            changeParam();
-        }
+
 
     useEffect(() => {
         changeParam();
-    }, [keyWord, valueVille, finalRange])
+    }, [keyWord, valueVille, finalRange,statusRecruteur])
 
 
     return (
@@ -81,8 +74,8 @@ function Search(props) {
                         type="checkbox"
                         variant='info'
                         value={2}
-                        //onChange={}
-                        onClick={handleClickRecruteur}
+                        onChange={event => setStatusRecruteur(true)}
+                        //onClick={setStatusRecruteur(true)}
                     >
                         Ma Cvthèque
                     </ToggleButton>
@@ -93,8 +86,8 @@ function Search(props) {
                         type="radio"
                         variant="info"
                         value={1}
-                        onChange={handleClickAll}
-                        onClick={event => {setStatusRecruteur(false)}}
+                        onChange={event => setStatusRecruteur(false)}
+                        //onClick={}
                     >
                         Candidathèque
                     </ToggleButton>
