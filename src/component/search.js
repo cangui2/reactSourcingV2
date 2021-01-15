@@ -1,9 +1,10 @@
-import {ButtonGroup, Col, Container, Form, Row, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
+import {Badge, Col, Container, Form, Row, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
 import AsyncSelect from 'react-select/async';
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from 'axios'
 import {Range} from "react-range";
-
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Search(props) {
@@ -13,13 +14,12 @@ function Search(props) {
     const [valueVille, setValueVille] = useState('');
     const [keyWord, setKeyWord] = useState('');
     const [recruteur, setRecruteur] = useState('6');
-    const [statusAll, setStatusALL] = useState(false);
     const [statusRecruteur, setStatusRecruteur] = useState(false);
-    const [checked, setChecked] = useState('info');
     const [range, setRange] = useState([1]);
     const [finalRange, setFinalRange] = useState([1]);
-    const [disabled,setDisabled]=useState(true);
-
+    const [disabled, setDisabled] = useState(true);
+    const [noRefrech, setNoRefresh] = useState(true);
+    const [countCv, setCountCv] = useState(props.countCV);
 
 
     // Recherche Api
@@ -36,8 +36,6 @@ function Search(props) {
                 callback(vil.data);
             });
     }
-
-
     // Si la valeur change on modifie.
     const handleChangeMetier = value => {
         setValueMetier(value);
@@ -45,54 +43,57 @@ function Search(props) {
     }
     const changeParam = () => {
         let params = [];
-            if (keyWord) {
-                params.push('keyword=' + keyWord);
-            }
-            if (statusRecruteur) {
-                params.push('recruteur=6');
-            }
-            if (valueVille){
-                params.push('ville='+valueVille);
-                params.push('rayon='+range);
-            }
+        if (keyWord) {
+            params.push('keyword=' + keyWord);
+        }
+        if (statusRecruteur) {
+            params.push('recruteur=6');
+        }
+        if (valueVille) {
+            params.push('ville=' + valueVille);
+            params.push('rayon=' + range);
+        }
 
-            props.onDemandeCvChanged(params.join("&"));
+        props.onDemandeCvChanged(params.join("&"));
     }
-
-
     useEffect(() => {
-        changeParam();
-    }, [keyWord, valueVille, finalRange,statusRecruteur])
-
+        if (noRefrech === false) {
+            setCountCv(props.countCV);
+            changeParam();
+        } else {
+        }
+    }, [keyWord, valueVille, finalRange, statusRecruteur, noRefrech])
 
     return (
         <Container style={styleSearch}>
             <Row style={{marginLeft: '0', marginRight: '0', paddingTop: '10px'}}>
                 <Col>
-                    <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-                    <ToggleButton
-                        type="checkbox"
-                        variant='info'
-                        value={2}
-                        onChange={ () => setStatusRecruteur(true)}
-                        //onClick={setStatusRecruteur(true)}
-                    >
-                        Ma Cvthèque
-                    </ToggleButton>
+                    <ToggleButtonGroup type="radio" name="options">
+                        <ToggleButton
+                            type="checkbox"
+                            variant='info'
+                            value={2}
+                            onChange={() => {
+                                setNoRefresh(false)
+                            }}
+                            onClick={() => setStatusRecruteur(true)}
+                        >
+                            Ma Cvthèque
+                        </ToggleButton>
 
                         &emsp;
 
-                    <ToggleButton
-                        type="radio"
-                        variant="info"
-                        value={1}
-                        onChange={ () => setStatusRecruteur(false)}
-                        //onClick={}
-                    >
-                        Candidathèque
-                    </ToggleButton>
-                </ToggleButtonGroup>
-                                    </Col>
+                        <ToggleButton
+                            type="radio"
+                            variant="info"
+                            value={1}
+                            onChange={() => setStatusRecruteur(false)}
+                            onClick={() => setNoRefresh(false)}
+                        >
+                            Candidathèque
+                        </ToggleButton>
+                    </ToggleButtonGroup>
+                </Col>
             </Row>
             <Row>
                 <Col>
@@ -100,7 +101,13 @@ function Search(props) {
                         <Form.Label>Mot clé</Form.Label>
                         <Form.Control
                             placeholder="Metier, Competence ..."
-                            onChange={e=>{setKeyWord(e.target.value)}}
+                             // onChange={e => {
+                             //     setKeyWord(e.target.value)
+                             // }}
+                            onChange={e => {
+                                setKeyWord(e.target.value)
+                            }}
+
                         />
                     </Form.Group>
                 </Col>
@@ -113,7 +120,6 @@ function Search(props) {
                             className="mb-2"
                             loadOptions={loadOptionMetier}
                             getOptionLabel={met => met.libelle}
-                            //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
                             placeholder="Saisissez le metier"
                             onChange={handleChangeMetier}
@@ -130,11 +136,16 @@ function Search(props) {
                             loadOptions={loadOtionVille}
                             getOptionLabel={vil => vil.nom}
                             isClearable={true}
-                            //getOptionLabel={ (met) => { return met.nom } }
                             components={{DropdownIndicator: () => null, IndicatorSeparator: () => null}}
                             placeholder="Saisissez la ville.."
-                            onChange={value=>{ if(value) {setValueVille(value.id);setDisabled(false)} else {setDisabled(true)}}}
-                            //onInputChange={changeParam}
+                            onChange={value => {
+                                if (value) {
+                                    setValueVille(value.id);
+                                    setDisabled(false)
+                                } else {
+                                    setDisabled(true)
+                                }
+                            }}
                         />
                     </Form.Group>
                     <Range
@@ -172,24 +183,28 @@ function Search(props) {
                             />
                         )}
                     />
-                    <output style={{marginTop: "30px" }} id="output">
-                        Distance sélectionnée {range-1} Km
+                    <output style={{marginTop: "30px"}} id="output">
+                        Distance sélectionnée {range - 1} Km
                     </output>
+                    <output style={{marginTop: "30px"}} id="output">
+                        Nombre de Cv disponible: {props.total}
+                    </output>
+                    <br/>
+
                 </Col>
+
             </Row>
+
         </Container>
     )
 };
 const styleSearch = {
-
-    //border:'2px solid #000000',
+    position:'fixed',
     backgroundColor: 'white',
     opacity: '0.9',
     marginTop: '10px',
     boxShadow: "10px 10px 1px #9E9E9E",
     minHeight: '90vh',
-    maxWidth: '395px',
-
-
+    maxWidth: '365px',
 }
 export default Search;

@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
-import React, {useState} from "react";
-import {Container, Row, Col} from "react-bootstrap";
+import React, {useEffect, useState} from "react";
+import {Col, Container, Row} from "react-bootstrap";
 import axios from 'axios'
 import Search from "./component/search";
 import Results from "./component/results";
@@ -9,33 +9,32 @@ import Details from "./component/details";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = (props) => {
     // all const
     const [liste, setListe] = useState([]);
     const [item, setItem] = useState(null);
     const [cvCandidat, setCvCandidat] = useState([]);
+    const [noRefrech, setNoRefresh] = useState(true);
     /*-------------------------------------------------------------*/
     const handleCvRequest = (param) => {
-
-        // param -> keyword=sql&ville=amiens&recruteur=12
-        console.log(param);
-        console.log(axios.get(`https://127.0.0.1:8000/api/sourcing?`+ param));
-        axios.get(`https://127.0.0.1:8000/api/sourcing?`+ param)
+            setNoRefresh(false);
+        axios.get(`https://127.0.0.1:8000/api/sourcing?` + param)
 
             .then((result) => {
 
                 setListe(result.data);
-                console.log(result.data)
+
                 setCvCandidat([]);
             })
             .catch(error => console.log(error));
     }
-    // Cv Candidat
 
 
     const handleCv = (cv) => {
-        console.log(cv + 'requete id');
-        console.log(axios.get(`https://127.0.0.1:8000/api/c_vs?metier.id=` + cv));
+
         axios.get(`https://127.0.0.1:8000/api/c_vs?id=` + cv)
             .then((result) => {
 
@@ -44,22 +43,36 @@ const App = (props) => {
             })
     }
 
-
+    // const test = (value) => {
+    //     toast.dark(("Nombre de Cv disponible" + " " + value), {
+    //         position: toast.POSITION.BOTTOM_LEFT,
+    //     });
+    //
+    // }
+    //
+    // useEffect(() => {
+    //     if(noRefrech===false){
+    //         test(liste.length);
+    //     }
+    //
+    // }, [liste])
+console.log(cvCandidat)
     return (
         <Container fluid style={styleSearch}>
             <Row>
-                <Col md={3} >
+                <Col md={3}>
                     <Search
                         onDemandeCvChanged={(param) => handleCvRequest(param)}
-
+                        total={liste.length}
                     />
-                </Col >
+
+                </Col>
 
                 <Col md={4} style={border}>
                     <Results liste={liste} onReceiveCv={(cv) => handleCv(cv)}/>
                 </Col>
 
-                <Col md={5}  style={border}>
+                <Col md={5} style={border}>
                     <Details cv={cvCandidat}/>
                 </Col>
 
@@ -83,6 +96,7 @@ const border = {
 
 
 }
+
 
 
 ReactDOM.render(
