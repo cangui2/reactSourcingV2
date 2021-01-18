@@ -133,8 +133,8 @@ const CVViewer = (props) => {
 export default CVViewer;
 
 const paperStyle = {
-    position:'fixed',
-    marginTop: '0px',
+    //position:'fixed',
+    marginTop: '-100px',
     //transform: 'scale(1)',
     width: 'auto',
    // top:'-250px',
