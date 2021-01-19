@@ -2,9 +2,12 @@ import React from 'react';
 import avatar from '../avatar.png'
 
 import './CV.css';
+import Moment from 'react-moment';
 
 
 const CVViewer = (props) => {
+
+
 
 
     return (
@@ -16,12 +19,11 @@ const CVViewer = (props) => {
                 <div className="nom">{props.cv.candidat.prenom} {props.cv.candidat.nom}</div>
                 <section className="photo">
                     <div className="portrait"><img src={avatar}
-                                                   style={{width: '15%', paddingTop: '32px', paddingLeft: '3px'}}/>
+                                                   style={{width: '15%', paddingTop: '32px', paddingLeft: '3px',float:'right'}}/>
                     </div>
                 </section>
+
             </section>
-
-
             <section className="profil">
 
                 <header>Contact</header>
@@ -32,6 +34,9 @@ const CVViewer = (props) => {
                 <div className="email">{props.cv.candidat.email}</div>
 
             </section>
+
+
+
 
 
             <section className="titre">
@@ -52,8 +57,8 @@ const CVViewer = (props) => {
                 <div>
                     {props.cv.experiences.map(experience => (
                         <div className="experience">
-                            <div className="date-debut">{experience.dateDebut}</div>
-                            <div className="date-fin">{experience.dateFin}</div>
+                            <div className="date-debut"><Moment format="DD/MM/YYYY">{experience.dateDebut}</Moment></div>
+                            <div className="date-fin"><Moment format="DD/MM/YYYY">{experience.dateFin}</Moment></div>
                             <div className="entreprise">{experience.entreprise}</div>
                             <div className="ville">{experience.ville}</div>
                             <div className="logo">{experience.logo}</div>
@@ -69,8 +74,8 @@ const CVViewer = (props) => {
                 <div>
                     {props.cv.formations.map(formations => (
                         <div className="formation">
-                            <div className="date-debut">{formations.dateDebut}</div>
-                            <div className="date-fin">{formations.dateFin}</div>
+                            <div className="date-debut"><Moment format="DD/MM/YYYY">{formations.dateDebut}</Moment></div>
+                            <div className="date-fin"><Moment format="DD/MM/YYYY">{formations.dateFin}</Moment></div>
                             <div className="ecole">{formations.ecole}</div>
                             <div className="titre">{formations.diplome}</div>
                             <div className="niveau">{formations.niveau}</div>
@@ -98,10 +103,10 @@ const CVViewer = (props) => {
                 <header>Langues</header>
                 <div>
                     {
-                        props.cv.langues.map((langue, index) =>
+                        props.cv.langues.map((langues, index) =>
                             <div className="langue" key={index}>
-                                <div className="libelle">{langue.libelle}</div>
-                                <div className="niveau">{langue.niveau}</div>
+                                <div className="libelle">{langues.nom}</div>
+                                <div className="niveau">{langues.niveau}</div>
                             </div>
                         )
                     }
@@ -133,10 +138,12 @@ const CVViewer = (props) => {
 export default CVViewer;
 
 const paperStyle = {
-    //position:'fixed',
-    marginTop: '-100px',
+    position:'fixed',
+    marginTop: '-10px',
+    fontSize:'11px',
+    maxHeight:'100px'
     //transform: 'scale(1)',
-    width: 'auto',
+    //width: 'auto',
    // top:'-250px',
 
 
