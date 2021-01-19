@@ -259,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611048381890</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="clean code">
+      <created>1611049574980</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1611049574980</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +293,6 @@
     <MESSAGE value="ajout on c jamais" />
     <MESSAGE value="template cv" />
     <MESSAGE value="fix cv" />
-    <MESSAGE value="clean code" />
     <MESSAGE value="suppression card" />
     <MESSAGE value="debut de correction responsive" />
     <MESSAGE value="fix bug" />
@@ -295,6 +301,7 @@
     <MESSAGE value="update" />
     <MESSAGE value="boostrap fix" />
     <MESSAGE value="fix cv + date conversion" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix cv + date conversion" />
+    <MESSAGE value="clean code" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean code" />
   </component>
 </project>

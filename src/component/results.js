@@ -50,6 +50,7 @@ const styleSearch = {
     marginTop: '0px',
     boxShadow: "5px 5px 1px #9E9E9E",
     opacity: '0.9',
+    cursor:'grab'
 }
 
 
