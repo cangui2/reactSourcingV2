@@ -15,48 +15,25 @@ import 'react-toastify/dist/ReactToastify.css';
 const App = (props) => {
     // all const
     const [liste, setListe] = useState([]);
-    const [item, setItem] = useState(null);
     const [cvCandidat, setCvCandidat] = useState([]);
     const [noRefrech, setNoRefresh] = useState(true);
     /*-------------------------------------------------------------*/
     const handleCvRequest = (param) => {
             setNoRefresh(false);
         axios.get(`https://127.0.0.1:8000/api/sourcing?` + param)
-
             .then((result) => {
-
                 setListe(result.data);
-
                 setCvCandidat([]);
             })
             .catch(error => console.log(error));
     }
-
-
     const handleCv = (cv) => {
-
         axios.get(`https://127.0.0.1:8000/api/c_vs?id=` + cv)
             .then((result) => {
-
                 setCvCandidat(result.data[0]);
-
             })
     }
 
-    // const test = (value) => {
-    //     toast.dark(("Nombre de Cv disponible" + " " + value), {
-    //         position: toast.POSITION.BOTTOM_LEFT,
-    //     });
-    //
-    // }
-    //
-    // useEffect(() => {
-    //     if(noRefrech===false){
-    //         test(liste.length);
-    //     }
-    //
-    // }, [liste])
-console.log(cvCandidat)
     return (
         <Container fluid style={styleSearch}>
             <Row>
@@ -65,13 +42,10 @@ console.log(cvCandidat)
                         onDemandeCvChanged={(param) => handleCvRequest(param)}
                         total={liste.length}
                     />
-
                 </Col>
-
                 <Col md={4} style={border}>
                     <Results liste={liste} onReceiveCv={(cv) => handleCv(cv)}/>
                 </Col>
-
                 <Col md={5} style={border}>
                     <Details cv={cvCandidat}/>
                 </Col>
@@ -82,22 +56,11 @@ console.log(cvCandidat)
 }
 
 const styleSearch = {
-
-
     minHeight: "90vh",
-
-
 }
-
 const border = {
-
-
     minHeight: "90vh",
-
-
 }
-
-
 
 ReactDOM.render(
     <React.StrictMode>

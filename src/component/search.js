@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function Search(props) {
-
     // All constant useState
     const [valueMetier, setValueMetier] = useState([]);
     const [valueVille, setValueVille] = useState('');
@@ -20,8 +19,6 @@ function Search(props) {
     const [disabled, setDisabled] = useState(true);
     const [noRefrech, setNoRefresh] = useState(true);
     const [countCv, setCountCv] = useState(props.countCV);
-
-
     // Recherche Api
     const loadOptionMetier = (valueMetier, callback) => {
         console.log(axios.get("https://127.0.0.1:8000/api/metiers?libelle=" + valueMetier))
@@ -39,7 +36,6 @@ function Search(props) {
     // Si la valeur change on modifie.
     const handleChangeMetier = value => {
         setValueMetier(value);
-
     }
     const changeParam = () => {
         let params = [];
@@ -53,7 +49,6 @@ function Search(props) {
             params.push('ville=' + valueVille);
             params.push('rayon=' + range);
         }
-
         props.onDemandeCvChanged(params.join("&"));
     }
     useEffect(() => {
@@ -63,7 +58,6 @@ function Search(props) {
         } else {
         }
     }, [keyWord, valueVille, finalRange, statusRecruteur, noRefrech])
-
     return (
         <Container style={styleSearch}>
             <Row style={{marginLeft: '0', marginRight: '0', paddingTop: '10px'}}>
@@ -80,9 +74,7 @@ function Search(props) {
                         >
                             Ma Cvthèque
                         </ToggleButton>
-
                         &emsp;
-
                         <ToggleButton
                             type="radio"
                             variant="info"
@@ -101,13 +93,12 @@ function Search(props) {
                         <Form.Label>Mot clé</Form.Label>
                         <Form.Control
                             placeholder="Metier, Competence ..."
-                             // onChange={e => {
-                             //     setKeyWord(e.target.value)
-                             // }}
+                            // onChange={e => {
+                            //     setKeyWord(e.target.value)
+                            // }}
                             onChange={e => {
                                 setKeyWord(e.target.value)
                             }}
-
                         />
                     </Form.Group>
                 </Col>
@@ -190,16 +181,13 @@ function Search(props) {
                         Nombre de Cv disponible: {props.total}
                     </output>
                     <br/>
-
                 </Col>
-
             </Row>
-
         </Container>
     )
 };
 const styleSearch = {
-    position:'fixed',
+    position: 'fixed',
     backgroundColor: 'white',
     opacity: '0.9',
     marginTop: '10px',
